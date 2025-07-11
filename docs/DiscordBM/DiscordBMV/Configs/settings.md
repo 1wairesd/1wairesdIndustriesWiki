@@ -138,6 +138,34 @@ debug:
 
 ---
 
+## mysql
+
+**Описание:** Настройки подключения к базе данных MySQL.
+
+- **enabled** — включить или отключить использование MySQL (`true`/`false`).
+- **host** — адрес сервера базы данных (например, `localhost`).
+- **port** — порт для подключения (обычно `3306`).
+- **database** — имя базы данных.
+- **username** — имя пользователя для подключения.
+- **password** — пароль пользователя.
+- **params** — дополнительные параметры строки подключения (например, `?useSSL=false&serverTimezone=UTC`).
+
+**Пример:**
+```yaml
+mysql:
+  enabled: false
+  host: localhost
+  port: 3306
+  database: discordbmv
+  username: root
+  password: password
+  params: '?useSSL=false&serverTimezone=UTC'
+  # example:
+  # jdbc:mysql://localhost:3306/discordbmv?user=root&password=password&useSSL=false&serverTimezone=UTC
+```
+
+---
+
 ## Полный пример конфига
 
 ```yaml
@@ -177,4 +205,15 @@ debug:
   debug-netty-start: false           # Логировать запуск Netty-сервера
   debug-errors: true                 # Логировать ошибки и исключения
   debug-button-register: false       # Логировать регистрацию кнопок
+
+mysql:
+  enabled: false
+  host: localhost
+  port: 3306
+  database: discordbmv
+  username: root
+  password: password
+  params: '?useSSL=false&serverTimezone=UTC'
+  # example:
+  # jdbc:mysql://localhost:3306/discordbmv?user=root&password=password&useSSL=false&serverTimezone=UTC
 ```
