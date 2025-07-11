@@ -187,6 +187,19 @@ actions:
 
 ---
 
+### type: remove_role
+Удалить роль у пользователя.
+- **role_id** — ID роли.
+
+**Пример:**
+```yaml
+actions:
+  - type: remove_role
+    role_id: "1234567890123456789"
+```
+
+---
+
 ### type: resolve_placeholders
 Вставляет значения плейсхолдеров в шаблон.
 - **template** — строка-шаблон с плейсхолдерами.
