@@ -84,7 +84,7 @@ const config = {
         title: 'My Site',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/1wairesdindustries.png',
         },
         items: [
           {
