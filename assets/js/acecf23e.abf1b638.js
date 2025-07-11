@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_1wairesdIndustriesWiki=self.webpackChunk_1wairesdIndustriesWiki||[]).push([[1903],{1912:s=>{s.exports=JSON.parse('{"blogBasePath":"/1wairesdIndustriesWiki/blog","blogTitle":"Blog","authorsListPath":"/1wairesdIndustriesWiki/blog/authors"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_1wairesdIndustriesWiki=self.webpackChunk_1wairesdIndustriesWiki||[]).push([[9647],{7121:(e,s,r)=>{r.r(s),r.d(s,{default:()=>c});r(6540);var i=r(4164),u=r(5500),a=r(7559),d=r(2831),n=r(1656),t=r(4848);function c(e){return(0,t.jsx)(u.e3,{className:(0,i.A)(a.G.wrapper.docsPages),children:(0,t.jsx)(n.A,{children:(0,d.v)(e.route.routes)})})}}}]);
