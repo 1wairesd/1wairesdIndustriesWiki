@@ -1,0 +1,180 @@
+---
+sidebar_position: 1
+id: dscordbmv-main-settings
+title: settings.yml
+---
+
+# Документация по настройке settings.yml
+
+Этот файл содержит описание всех параметров конфига для интеграции с Discord-ботом и сервером.
+
+---
+
+## Discord
+
+**Описание:** Настройки Discord-бота.
+
+- **Bot-token** — токен вашего Discord-бота. Никому не показывайте свой токен!
+- **activity** — настройки активности бота (то, что отображается в статусе).
+  - `type`: Тип активности (`playing`, `listening`, `watching` и т.д.)
+  - `message`: Сообщение, которое будет отображаться.
+
+**Пример:**
+```yaml
+Discord:
+  Bot-token: <ваш токен>
+  activity:
+    type: "playing"
+    message: "BatMine"
+```
+
+> ⚠️ **Безопасность:** Никогда не публикуйте свой реальный токен в открытом доступе!
+
+---
+
+## netty
+
+**Описание:** Настройки сетевого соединения.
+- `ip`: IP-адрес, на котором будет работать сервер (по умолчанию: `127.0.0.1`).
+- `port`: Порт для входящих соединений (например, `23234`).
+
+**Пример:**
+```yaml
+netty:
+  ip: "127.0.0.1"
+  port: 23234
+```
+> ⚠️ **Безопасность:** Не разглашайте данные подключения, это важно для безопасности.
+
+---
+
+## forwarding-secret-file
+
+**Описание:** Путь к файлу с секретным ключом, который требует хостинг для подключения клиента.
+
+**Пример:**
+```yaml
+forwarding-secret-file: "secret.complete.code"
+```
+
+---
+
+## view_connected_banned_ip
+
+**Описание:** Показывать ли IP-адреса забаненных пользователей среди подключаемых клиентов.
+- **Тип:** `true` или `false`
+
+**Пример:**
+```yaml
+view_connected_banned_ip: false
+```
+
+---
+
+## commands.default-ephemeral
+
+**Описание:** Делать ли ответы на команды по умолчанию эфемерными (видимыми только отправителю).
+- **Тип:** `true` или `false`
+
+**Пример:**
+```yaml
+commands:
+  default-ephemeral: false
+```
+
+---
+
+## buttons.timeout-ms
+
+**Описание:** Время ожидания (таймаут) жизни для кнопок в миллисекундах (например, 900000 мс = 15 минут).
+
+**Пример:**
+```yaml
+buttons:
+  timeout-ms: 900000
+```
+
+---
+
+## debug
+
+**Описание:** Группа параметров для включения/отключения различных режимов отладки.
+
+- `debug-connections`: Логировать подключения и отключения клиентов.
+- `debug-client-responses`: Логировать запросы и ответы от клиентов.
+- `debug-plugin-connections`: Логировать подключения аддонов.
+- `debug-command-registrations`: Логировать события регистрации команд.
+- `debug-command-received`: Логировать полученные slash-команды.
+- `debug-command-execution`: Логировать выполнение пользовательских команд.
+- `debug-resolved-messages`: Логировать обработанные сообщения из плейсхолдеров.
+- `debug-request-processing`: Логировать обработку запросов/ответов с отслеживанием хуков.
+- `debug-command-not-found`: Логировать предупреждения, когда команда не найдена.
+- `debug-sendmessage-action`: Логировать действия отправки сообщений.
+- `debug-sendmessage-to-channel`: Логировать отправку сообщений в канал.
+- `debug-authentication`: Логировать попытки аутентификации и их результаты.
+- `debug-netty-start`: Логировать запуск Netty-сервера.
+- `debug-errors`: Логировать ошибки и исключения.
+- `debug-button-register`: Логировать регистрацию кнопок.
+
+**Пример:**
+```yaml
+debug:
+  debug-connections: true
+  debug-client-responses: true
+  debug-plugin-connections: true
+  debug-command-registrations: false
+  debug-command-received: true
+  debug-command-execution: true
+  debug-resolved-messages: false
+  debug-request-processing: true
+  debug-command-not-found: false
+  debug-sendmessage-action: true
+  debug-sendmessage-to-channel: false
+  debug-authentication: true
+  debug-netty-start: false
+  debug-errors: true
+  debug-button-register: false
+```
+
+---
+
+## Полный пример конфига
+
+```yaml
+Discord:
+  Bot-token: <Ваш токен>
+  activity:
+    type: "playing"
+    message: "BatMine"
+
+netty:
+  ip : "127.0.0.1"
+  port: 23234 
+
+forwarding-secret-file: "secret.complete.code"
+
+view_connected_banned_ip: false
+
+commands:
+  default-ephemeral: false
+
+buttons:
+  timeout-ms: 900000
+
+debug:
+  debug-connections: true            # Логировать подключения и отключения клиентов
+  debug-client-responses: true       # Логировать запросы и ответы от клиентов
+  debug-plugin-connections: true     # Логировать подключения аддонов
+  debug-command-registrations: false # Логировать события регистрации команд
+  debug-command-received: true       # Логировать полученные slash-команды
+  debug-command-execution: true      # Логировать выполнение пользовательских команд
+  debug-resolved-messages: false     # Логировать обработанные сообщения из плейсхолдеров
+  debug-request-processing: true     # Логировать обработку запросов/ответов с отслеживанием хуков
+  debug-command-not-found: false     # Логировать предупреждения, когда команда не найдена
+  debug-sendmessage-action: true     # Логировать действия отправки сообщений
+  debug-sendmessage-to-channel: false # Логировать отправку сообщений в канал
+  debug-authentication: true         # Логировать попытки аутентификации и их результаты
+  debug-netty-start: false           # Логировать запуск Netty-сервера
+  debug-errors: true                 # Логировать ошибки и исключения
+  debug-button-register: false       # Логировать регистрацию кнопок
+```
