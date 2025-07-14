@@ -149,6 +149,7 @@ actions:
 ### type: delete_message
 Удаляет сообщение по метке.
 - **label** — метка сообщения.
+- **delete_all** - удалять все сообщения с меткой (true) или только последнее (false), если (delete_all) не указан то по умолчанию true
 - **response_message** — сообщение-ответ после удаления.
 
 **Пример:**
@@ -156,6 +157,7 @@ actions:
 actions:
   - type: delete_message
     label: test_message
+    delete_all: true
     response_message: "Test message has been deleted."
 ```
 
