@@ -28,7 +28,7 @@ title: commands.yml
 Позволяют добавить параметры для команды.
 
 - **name** — имя опции.
-- **type** — тип (`STRING`, `USER`, `CHANNEL` и др.).
+- **type** — тип (`STRING`, `USER`, `CHANNEL`, `INTEGER`, `BOOLEAN`, `ROLE`, `MENTIONABLE`).
 - **description** — описание опции.
 - **required** — обязательна ли опция (`true`/`false`).
 
@@ -68,7 +68,7 @@ conditions:
 ### type: send_message
 Отправляет сообщение пользователю или в канал.
 - **message** — текст сообщения (поддерживаются плейсхолдеры).
-- **response_type** — тип ответа (`REPLY`, `edit_message` и др.).
+- **response_type** — тип ответа (`reply`, `edit_message`, `random_reply`, `MODAL`, `REPLY_MODAL`, `DIRECT`, `CHANNEL`).
 - **label** — метка для дальнейших действий (например, для удаления).
 - **embed** — объект embed-сообщения (см. ниже).
 
@@ -79,6 +79,24 @@ actions:
     message: "Hello, {user}!"
     response_type: REPLY
     label: welcome_message
+```
+
+---
+
+### type: send_message
+Отправить рандомный ответ.
+- **responses** — рандомные ответы.
+
+**Пример:**
+```yaml
+actions:
+  - type: send_message
+    response_type: random_reply
+    responses:
+      - "Привет!"
+      - "Здравствуй!"
+      - "Хай!"
+      - "Добрый день!"
 ```
 
 ---
@@ -102,7 +120,7 @@ actions:
 ### type: button
 Добавляет кнопку к сообщению.
 - **label** — текст на кнопке.
-- **style** — стиль (`PRIMARY`, `DANGER`, `LINK` и др.).
+- **style** — стиль (`PRIMARY`, `DANGER`, `LINK` `SUCCESS`, `SECONDARY`).
 - **id** — уникальный идентификатор кнопки.
 - **url** — ссылка (для стиля LINK).
 - **emoji** — эмодзи на кнопке.
