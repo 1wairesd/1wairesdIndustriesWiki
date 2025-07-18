@@ -68,7 +68,7 @@ conditions:
 ### type: send_message
 Отправляет сообщение пользователю или в канал.
 - **message** — текст сообщения (поддерживаются плейсхолдеры).
-- **response_type** — тип ответа (`reply`, `edit_message`, `random_reply`, `MODAL`, `REPLY_MODAL`, `DIRECT`, `CHANNEL`).
+- **response_type** — тип ответа (`REPLY`, `EDIT_MESSAGE`, `RANDOM_REPLY`, `MODAL`, `REPLY_MODAL`, `DIRECT`, `CHANNEL`, `REPLY_TO_MESSAGE`).
 - **label** — метка для дальнейших действий (например, для удаления).
 - **embed** — объект embed-сообщения (см. ниже).
 
@@ -85,14 +85,34 @@ actions:
 
 ### type: send_message
 Отправить рандомный ответ.
-- **responses** — рандомные ответы.
+- **REPLY_TO_MESSAGE** - ответ на сообщение
+- **message** — ответ.
+- **reply_message_id** - указать ID сообщения
+- **reply_mention_author** - пинговать автора сообщения
 
 **Пример:**
 ```yaml
 actions:
   - type: send_message
-    response_type: random_reply
-    responses:
+    response_type: REPLY_TO_MESSAGE
+    message: "Ответ на конкретное сообщение!"
+    reply_message_id: "{option:message_id}"
+    reply_mention_author: true
+```
+
+---
+
+### type: send_message
+Отправить рандомный ответ.
+- **RANDOM_REPLY** - выбор рандомной отправки
+- **message** — ответы.
+
+**Пример:**
+```yaml
+actions:
+  - type: send_message
+    response_type: RANDOM_REPLY
+    message:
       - "Привет!"
       - "Здравствуй!"
       - "Хай!"
@@ -130,7 +150,7 @@ actions:
 - **message** — сообщение при нажатии.
 - **timeout** — время жизни кнопки (ms или `infinite`).
 
-**Пример:**
+**Пример со ссылкой:**
 ```yaml
 actions:
   - type: button
@@ -138,6 +158,20 @@ actions:
     style: "LINK"
     url: "https://example.com"
     emoji: "🔗"
+    timeout: infinite
+    disabled: false
+```
+
+**Пример с формаой:**
+```yaml
+actions:
+  - type: button
+    label: "Open the site"
+    style: "LINK"
+    form_name: "feedback-form"
+    required_role: "1234567890123456789"
+    emoji: "🔗"
+    timeout: infinite
     disabled: false
 ```
 
