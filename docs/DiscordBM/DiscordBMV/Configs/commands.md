@@ -81,8 +81,6 @@ actions:
     label: welcome_message
 ```
 
----
-
 ### type: send_message
 Отправить рандомный ответ.
 - **REPLY_TO_MESSAGE** - ответ на сообщение
@@ -99,8 +97,6 @@ actions:
     reply_message_id: "{option:message_id}"
     reply_mention_author: true
 ```
-
----
 
 ### type: send_message
 Отправить рандомный ответ.
