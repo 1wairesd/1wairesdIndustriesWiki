@@ -47,3 +47,5 @@ title: Главная
   - /DiscordBMV webhook `<webhook_name>` `<true/false>` - управление webhook
   - /DiscordBMV commands custom - кастомные команды
   - /DiscordBMV commands addons - команды аддонов
+  - /DiscordBMV editor - редактировать команды на сайте (сайт полностью не готов)
+  - /DiscordBMV applyedits - загрузить изменения из сайта (сайт полностью не готов)
