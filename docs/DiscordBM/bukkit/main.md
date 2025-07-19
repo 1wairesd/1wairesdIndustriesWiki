@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-id: discordbmb-main
+id: bukkit-main
 title: Главная
 ---
 
