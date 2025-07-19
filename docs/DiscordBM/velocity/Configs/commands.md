@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-id: dscordbmv-main-commands
+id: velocity-main-commands
 title: commands.yml
 ---
 

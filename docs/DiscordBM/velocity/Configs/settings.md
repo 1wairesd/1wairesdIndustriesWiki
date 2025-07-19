@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-id: dscordbmv-main-settings
+id: velocity-main-settings
 title: settings.yml
 ---
 
