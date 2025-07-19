@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-id: bukkit-main-commands
+id: bukkit-main-settings
 title: Главная
 ---
 
