@@ -33,5 +33,5 @@ title: Главная
 - шанс выполнения
 
 # Команды
-- /DiscordBMB help - помощь
-- /DiscordBMB reload - перезагрузка
+- /dbm help - помощь
+- /dbm reload - перезагрузка

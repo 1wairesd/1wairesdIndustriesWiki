@@ -39,13 +39,15 @@ title: Главная
   - управление ролями
   - проверка разрешений
   - отправка/редактирование сообщений
+  - ответ на сообщение
+  - ответ рандомным сообщением
   - шанс выполнения
 
 # Команды (Minecraft)
-  - /DiscordBMV help - помощь
-  - /DiscordBMV reload - перезагрузка
-  - /DiscordBMV webhook `<webhook_name>` `<true/false>` - управление webhook
-  - /DiscordBMV commands custom - кастомные команды
-  - /DiscordBMV commands addons - команды аддонов
-  - /DiscordBMV editor - редактировать команды на сайте (сайт полностью не готов)
-  - /DiscordBMV applyedits - загрузить изменения из сайта (сайт полностью не готов)
+  - /dbmv help - помощь
+  - /dbmv reload - перезагрузка
+  - /dbmv webhook `<webhook_name>` `<true/false>` - управление webhook
+  - /dbmv commands custom - кастомные команды
+  - /dbmv commands addons - команды аддонов
+  - /dbmv editor - редактировать команды на сайте (сайт полностью не готов)
+  - /dbmv applyedits - загрузить изменения из сайта (сайт полностью не готов)
