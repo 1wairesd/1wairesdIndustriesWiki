@@ -41,7 +41,7 @@ import Admonition from '@theme/Admonition';
 ```yaml
 webhook_triggers:
   - type: case_open_count
-    case: "*" # * — для всех кейсов, либо название конкретного кейса
+    case: "default" # * — для всех кейсов, либо название конкретного кейса
     count: 100
     webhook: "DBMDonateCase_open"
     message: "Игрок {player} открыл {count} кейсов {case}!"
@@ -84,9 +84,9 @@ webhook_triggers:
 
   - type: global_open_count
     case: "*"
-    count: 11
+    count: 100
     webhook: "DBMDonateCase_open"
-    message: "На сервере открыли уже 10 000 кейсов {case}!"
+    message: "На сервере открыли уже {count} кейсов {case}!"
     enabled: true
 ```
 
