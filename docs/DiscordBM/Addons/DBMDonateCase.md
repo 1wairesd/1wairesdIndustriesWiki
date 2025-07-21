@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 id: dbmdonatecase-main
-title: Главная
+title: DBMDonateCase
 ---
 
 # DBMDonateCase
