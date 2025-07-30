@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 id: bukkit-main-settings
-title: Главная
+title: settings.yml
 ---
 
 # Документация по настройкам Bukkit
