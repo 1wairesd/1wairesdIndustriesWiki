@@ -30,7 +30,7 @@ function HomepageHeader() {
             Создаю масштабные системы, которые решают реальные проблемы и делают ваш сервер уникальным
           </div>
           <div className={styles.buttons}>
-            <Link className={styles.primaryButton} to="/docs/intro">
+            <Link className={styles.primaryButton} to="/docs/1wairesd-info-main">
               📚 Документация
             </Link>
             <Link className={styles.secondaryButton} to="https://github.com/1wairesd">
@@ -52,7 +52,7 @@ function ProjectSection() {
             <div className={styles.projectIcon}>🔗</div>
             <h3>DiscordBM</h3>
             <p>Инновационный плагин для интеграции Discord с Minecraft серверами</p>
-            <Link to="/docs/DiscordBM/intro" className={styles.projectLink}>
+            <Link to="/docs/DiscordBM/DiscordBMV/Configs/settings" className={styles.projectLink}>
               Узнать больше →
             </Link>
           </div>
@@ -70,7 +70,7 @@ function ProjectSection() {
             <div className={styles.projectIcon}>💡</div>
             <h3>Советы и трюки</h3>
             <p>Полезные знания для разработчиков и администраторов</p>
-            <Link to="/docs/intro" className={styles.projectLink}>
+            <Link to="/docs/1wairesd-info-main" className={styles.projectLink}>
               Открыть →
             </Link>
           </div>
