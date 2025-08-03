@@ -118,6 +118,51 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Убираем вертикальные линии иерархии в сайдбаре */
+.theme-doc-sidebar-item-category-level-1::before,
+.theme-doc-sidebar-item-category-level-2::before,
+.theme-doc-sidebar-item-category-level-3::before,
+.theme-doc-sidebar-item-category-level-4::before,
+.theme-doc-sidebar-item-category-level-5::before {
+  display: none !important;
+}
+
+.theme-doc-sidebar-item-category-level-1::after,
+.theme-doc-sidebar-item-category-level-2::after,
+.theme-doc-sidebar-item-category-level-3::after,
+.theme-doc-sidebar-item-category-level-4::after,
+.theme-doc-sidebar-item-category-level-5::after {
+  display: none !important;
+}
+
+/* Убираем вертикальные линии в меню */
+.menu__list-item::before,
+.menu__list-item::after {
+  display: none !important;
+}
+
+.menu__list-item .menu__list-item::before,
+.menu__list-item .menu__list-item::after {
+  display: none !important;
+}
+
+/* Убираем все декоративные элементы иерархии */
+.theme-doc-sidebar-item-category-level-1,
+.theme-doc-sidebar-item-category-level-2,
+.theme-doc-sidebar-item-category-level-3,
+.theme-doc-sidebar-item-category-level-4,
+.theme-doc-sidebar-item-category-level-5 {
+  position: relative;
+}
+
+.theme-doc-sidebar-item-category-level-1::before,
+.theme-doc-sidebar-item-category-level-2::before,
+.theme-doc-sidebar-item-category-level-3::before,
+.theme-doc-sidebar-item-category-level-4::before,
+.theme-doc-sidebar-item-category-level-5::before {
+  display: none !important;
+}
+
 /* Анимация появления страницы */
 @keyframes fadeInUp {
   from {
