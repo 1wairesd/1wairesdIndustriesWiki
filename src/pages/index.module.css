@@ -3,7 +3,6 @@
  * and scoped locally.
  */
 
-/* Главный баннер */
 .heroBanner {
   position: relative;
   min-height: 100vh;
@@ -14,7 +13,6 @@
   justify-content: center;
 }
 
-/* Анимированные узоры на заднем плане */
 .animatedBackground {
   position: absolute;
   top: 0;
@@ -99,7 +97,6 @@
   }
 }
 
-/* Контент героя */
 .heroContent {
   position: relative;
   z-index: 2;

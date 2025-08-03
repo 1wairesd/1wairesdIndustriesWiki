@@ -9,7 +9,7 @@ function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero', styles.heroBanner)}>
-      {/* Анимированные узоры на заднем плане */}
+      {}
       <div className={styles.animatedBackground}>
         <div className={styles.floatingShape}></div>
         <div className={styles.floatingShape}></div>
