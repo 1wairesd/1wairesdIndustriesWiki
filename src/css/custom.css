@@ -163,6 +163,64 @@
   display: none !important;
 }
 
+/* Дополнительные правила для полного удаления линий */
+.theme-doc-sidebar-item-category-level-1 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-2 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-3 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-4 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-5 .menu__list-item::before {
+  display: none !important;
+}
+
+/* Убираем все псевдоэлементы в сайдбаре */
+.theme-doc-sidebar *::before,
+.theme-doc-sidebar *::after {
+  display: none !important;
+}
+
+/* Специально для меню */
+.menu__list *::before,
+.menu__list *::after {
+  display: none !important;
+}
+
+/* Убираем все линии в навигации */
+.theme-doc-sidebar-item-category-level-1 .menu__list-item,
+.theme-doc-sidebar-item-category-level-2 .menu__list-item,
+.theme-doc-sidebar-item-category-level-3 .menu__list-item,
+.theme-doc-sidebar-item-category-level-4 .menu__list-item,
+.theme-doc-sidebar-item-category-level-5 .menu__list-item {
+  position: relative;
+}
+
+.theme-doc-sidebar-item-category-level-1 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-2 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-3 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-4 .menu__list-item::before,
+.theme-doc-sidebar-item-category-level-5 .menu__list-item::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Убираем все декоративные элементы в сайдбаре */
+.theme-doc-sidebar .menu__list-item::before,
+.theme-doc-sidebar .menu__list-item::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Дополнительно убираем все линии */
+.theme-doc-sidebar .menu__list-item {
+  background: none !important;
+}
+
+.theme-doc-sidebar .menu__list-item::before,
+.theme-doc-sidebar .menu__list-item::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
 /* Анимация появления страницы */
 @keyframes fadeInUp {
   from {
