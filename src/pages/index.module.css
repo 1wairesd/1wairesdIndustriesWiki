@@ -3,10 +3,11 @@
  * and scoped locally.
  */
 
+/* Главный баннер */
 .heroBanner {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  background: linear-gradient(135deg, var(--ifm-background-color) 0%, var(--ifm-background-surface-color) 50%, var(--ifm-color-emphasis-100) 100%);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -29,6 +30,10 @@
   border-radius: 50%;
   animation: float 20s infinite linear;
   opacity: 0.3;
+}
+
+[data-theme='light'] .floatingShape {
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.15), rgba(167, 139, 250, 0.1));
 }
 
 .floatingShape:nth-child(1) {
@@ -119,20 +124,19 @@
 
 .heroSubtitle {
   font-size: 1.5rem;
-  color: #e5e7eb;
+  color: var(--ifm-color-content);
   margin-bottom: 1rem;
   animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 .heroDescription {
   font-size: 1.1rem;
-  color: #9ca3af;
+  color: var(--ifm-color-content-secondary);
   margin-bottom: 2rem;
   line-height: 1.6;
   animation: fadeInUp 1s ease-out 0.4s both;
 }
 
-/* Кнопки */
 .buttons {
   display: flex;
   gap: 1rem;
@@ -178,10 +182,9 @@
   text-decoration: none;
 }
 
-/* Секция проектов */
 .projectSection {
   padding: 5rem 0;
-  background: #0f0f23;
+  background: var(--ifm-background-surface-color);
 }
 
 .projectGrid {
@@ -191,7 +194,7 @@
 }
 
 .projectCard {
-  background: rgba(26, 26, 46, 0.8);
+  background: var(--ifm-background-color);
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 20px;
   padding: 3rem;
@@ -200,6 +203,12 @@
   backdrop-filter: blur(10px);
   max-width: 600px;
   width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .projectCard {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .projectCard:hover {
@@ -214,13 +223,13 @@
 }
 
 .projectCard h3 {
-  color: #e5e7eb;
+  color: var(--ifm-color-content);
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 .projectCard p {
-  color: #9ca3af;
+  color: var(--ifm-color-content-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -237,10 +246,9 @@
   text-decoration: none;
 }
 
-/* Секция статистики */
 .statsSection {
   padding: 5rem 0;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: var(--ifm-background-surface-color);
 }
 
 .statsGrid {
@@ -258,9 +266,18 @@
   transition: all 0.3s ease;
 }
 
+[data-theme='light'] .statItem {
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
 .statItem:hover {
   transform: translateY(-3px);
   background: rgba(139, 92, 246, 0.15);
+}
+
+[data-theme='light'] .statItem:hover {
+  background: rgba(139, 92, 246, 0.1);
 }
 
 .statNumber {
@@ -271,12 +288,11 @@
 }
 
 .statLabel {
-  color: #9ca3af;
+  color: var(--ifm-color-content-secondary);
   font-size: 1rem;
   font-weight: 500;
 }
 
-/* Анимации */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -288,7 +304,6 @@
   }
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .heroTitle {
     font-size: 2.5rem;
