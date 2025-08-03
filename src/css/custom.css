@@ -54,13 +54,11 @@
   background-color: #8b5cf6;
   border-color: #7c3aed;
   color: white;
-  transition: all 0.3s ease;
 }
 
 [data-theme='dark'] .button:hover {
   background-color: #7c3aed;
   border-color: #6d28d9;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 /* Подсветка текста в темной теме */
@@ -73,11 +71,6 @@
 [data-theme='dark'] .prism-code {
   background-color: #1a1a1a;
   border: 1px solid #333;
-  transition: border-color 0.3s ease;
-}
-
-[data-theme='dark'] .prism-code:hover {
-  border-color: #8b5cf6;
 }
 
 [data-theme='dark'] .prism-code .token.string {
@@ -95,7 +88,6 @@
 
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link {
   color: #8b5cf6;
-  transition: color 0.3s ease;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link:hover {
@@ -111,325 +103,66 @@
   color: #8b5cf6;
 }
 
-/* ===== АНИМАЦИИ И ПЛАВНЫЕ ПЕРЕХОДЫ ===== */
-
-/* Плавные переходы для всех элементов */
-* {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Убираем вертикальные линии иерархии в сайдбаре */
-.theme-doc-sidebar-item-category-level-1::before,
-.theme-doc-sidebar-item-category-level-2::before,
-.theme-doc-sidebar-item-category-level-3::before,
-.theme-doc-sidebar-item-category-level-4::before,
-.theme-doc-sidebar-item-category-level-5::before {
-  display: none !important;
-}
-
-.theme-doc-sidebar-item-category-level-1::after,
-.theme-doc-sidebar-item-category-level-2::after,
-.theme-doc-sidebar-item-category-level-3::after,
-.theme-doc-sidebar-item-category-level-4::after,
-.theme-doc-sidebar-item-category-level-5::after {
-  display: none !important;
-}
-
-/* Убираем вертикальные линии в меню */
-.menu__list-item::before,
-.menu__list-item::after {
-  display: none !important;
-}
-
-.menu__list-item .menu__list-item::before,
-.menu__list-item .menu__list-item::after {
-  display: none !important;
-}
-
-/* Убираем все декоративные элементы иерархии */
-.theme-doc-sidebar-item-category-level-1,
-.theme-doc-sidebar-item-category-level-2,
-.theme-doc-sidebar-item-category-level-3,
-.theme-doc-sidebar-item-category-level-4,
-.theme-doc-sidebar-item-category-level-5 {
+/* Плавное подчеркивание для иконок в боковой панели */
+.theme-doc-sidebar-item-link-level-1 .menu__link,
+.theme-doc-sidebar-item-link-level-2 .menu__link,
+.theme-doc-sidebar-item-link-level-3 .menu__link {
   position: relative;
-}
-
-.theme-doc-sidebar-item-category-level-1::before,
-.theme-doc-sidebar-item-category-level-2::before,
-.theme-doc-sidebar-item-category-level-3::before,
-.theme-doc-sidebar-item-category-level-4::before,
-.theme-doc-sidebar-item-category-level-5::before {
-  display: none !important;
-}
-
-/* Дополнительные правила для полного удаления линий */
-.theme-doc-sidebar-item-category-level-1 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-2 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-3 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-4 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-5 .menu__list-item::before {
-  display: none !important;
-}
-
-/* Убираем все псевдоэлементы в сайдбаре */
-.theme-doc-sidebar *::before,
-.theme-doc-sidebar *::after {
-  display: none !important;
-}
-
-/* Специально для меню */
-.menu__list *::before,
-.menu__list *::after {
-  display: none !important;
-}
-
-/* Убираем все линии в навигации */
-.theme-doc-sidebar-item-category-level-1 .menu__list-item,
-.theme-doc-sidebar-item-category-level-2 .menu__list-item,
-.theme-doc-sidebar-item-category-level-3 .menu__list-item,
-.theme-doc-sidebar-item-category-level-4 .menu__list-item,
-.theme-doc-sidebar-item-category-level-5 .menu__list-item {
-  position: relative;
-}
-
-.theme-doc-sidebar-item-category-level-1 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-2 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-3 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-4 .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-5 .menu__list-item::before {
-  display: none !important;
-  content: none !important;
-}
-
-/* Убираем все декоративные элементы в сайдбаре */
-.theme-doc-sidebar .menu__list-item::before,
-.theme-doc-sidebar .menu__list-item::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Дополнительно убираем все линии */
-.theme-doc-sidebar .menu__list-item {
-  background: none !important;
-}
-
-.theme-doc-sidebar .menu__list-item::before,
-.theme-doc-sidebar .menu__list-item::after {
-  display: none !important;
-  content: none !important;
-  background: none !important;
-}
-
-/* Убираем вертикальные линии для свернутых папок */
-.theme-doc-sidebar-item-category-level-1 .menu__list-item .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-2 .menu__list-item .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-3 .menu__list-item .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-4 .menu__list-item .menu__list-item::before,
-.theme-doc-sidebar-item-category-level-5 .menu__list-item .menu__list-item::before {
-  display: none !important;
-  content: none !important;
-}
-
-/* Убираем все вертикальные линии в иерархии */
-.menu__list-item .menu__list-item::before {
-  display: none !important;
-  content: none !important;
-}
-
-/* Оставляем только стрелки для развернутых папок */
-.menu__list-item .menu__list-item .menu__list-item::before {
-  display: none !important;
-  content: none !important;
-}
-
-/* Убираем все декоративные линии в сайдбаре */
-.theme-doc-sidebar .menu__list-item .menu__list-item::before,
-.theme-doc-sidebar .menu__list-item .menu__list-item::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Дополнительно убираем все возможные линии */
-.theme-doc-sidebar .menu__list-item .menu__list-item {
-  background: none !important;
-}
-
-.theme-doc-sidebar .menu__list-item .menu__list-item::before,
-.theme-doc-sidebar .menu__list-item .menu__list-item::after {
-  display: none !important;
-  content: none !important;
-  background: none !important;
-}
-
-/* Анимация появления страницы */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.theme-doc-markdown {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Анимация для карточек и блоков */
-.card, .admonition, .alert {
-  transition: box-shadow 0.3s ease;
-}
-
-.card:hover, .admonition:hover, .alert:hover {
-  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
-}
-
-/* Анимация для ссылок */
-a {
-  transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-/* Анимация для кнопок */
-.button, .btn {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.button:hover, .btn:hover {
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
-}
-
-/* Эффект пульсации для важных элементов */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.important-element {
-  animation: pulse 2s infinite;
-}
-
-/* Анимация для навигации */
-.menu__link {
   transition: all 0.3s ease;
-  position: relative;
 }
 
-.menu__link::after {
+.theme-doc-sidebar-item-link-level-1 .menu__link::after,
+.theme-doc-sidebar-item-link-level-2 .menu__link::after,
+.theme-doc-sidebar-item-link-level-3 .menu__link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+  background-color: #8b5cf6;
   transition: width 0.3s ease;
 }
 
-.menu__link:hover::after {
+.theme-doc-sidebar-item-link-level-1 .menu__link:hover::after,
+.theme-doc-sidebar-item-link-level-2 .menu__link:hover::after,
+.theme-doc-sidebar-item-link-level-3 .menu__link:hover::after {
   width: 100%;
 }
 
-/* Анимация для кода */
-pre {
-  transition: all 0.3s ease;
-}
-
-pre:hover {
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
-}
-
-/* Плавная прокрутка */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Оптимизация производительности */
+/* Улучшение производительности */
 * {
-  will-change: auto;
+  box-sizing: border-box;
 }
 
-/* Улучшение рендеринга */
+/* Оптимизация анимаций */
+@media (prefers-reduced-motion: no-preference) {
+  .menu__link,
+  .button,
+  .theme-doc-sidebar-item-link-level-1 .menu__link,
+  .theme-doc-sidebar-item-link-level-2 .menu__link,
+  .theme-doc-sidebar-item-link-level-3 .menu__link {
+    will-change: transform, opacity;
+  }
+}
+
+/* Плавные переходы для всех интерактивных элементов */
+a, button, .menu__link {
+  transition: all 0.2s ease;
+}
+
+/* Оптимизация для мобильных устройств */
+@media (max-width: 768px) {
+  .theme-doc-sidebar-item-link-level-1 .menu__link::after,
+  .theme-doc-sidebar-item-link-level-2 .menu__link::after,
+  .theme-doc-sidebar-item-link-level-3 .menu__link::after {
+    height: 1px;
+  }
+}
+
+/* Улучшение читаемости */
 body {
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-/* Анимация загрузки */
-@keyframes loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.loading {
-  animation: loading 1s linear infinite;
-}
-
-/* Эффект параллакса для фона */
-.parallax-bg {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Анимация для списков */
-ul, ol {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-li {
-  transition: transform 0.3s ease;
-}
-
-li:hover {
-  transform: translateX(5px);
-}
-
-/* Анимация для таблиц */
-table {
-  transition: all 0.3s ease;
-}
-
-table:hover {
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
-}
-
-/* Эффект свечения для активных элементов */
-.active-glow {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-  transition: box-shadow 0.3s ease;
-}
-
-/* Анимация для модальных окон */
-.modal {
-  animation: fadeInUp 0.4s ease-out;
-}
-
-/* Улучшение отзывчивости на мобильных */
-@media (max-width: 768px) {
-  * {
-    transition: none !important;
-  }
-  
-  .card:hover, .admonition:hover, .alert:hover {
-    transform: none;
-  }
 }
