@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+id: 1wairesd-info-main
+title: 1wairesd
 ---
 
 # 👋 Добро пожаловать в 1wairesdIndustries Wiki!
