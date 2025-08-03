@@ -72,4 +72,4 @@ title: 1wairesd
 ## 📞 Связаться со мной
 
 - **GitHub:** [@1wairesd](https://github.com/1wairesd)
-- **DiscordBM:** [Репозиторий проекта](https://github.com/1wairesd/DiscordBM)
+- **Discord:** [Discord](https://discord.gg/FcjketuH)
