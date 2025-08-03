@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '1wairesdIndustriesWiki',
-  tagline: 'Dinosaurs are cool',
+  title: '1wairesdIndustries Wiki',
+  tagline: 'Документация проектов и плагинов для Minecraft',
   favicon: 'img/1wairesdindustries.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
