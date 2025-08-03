@@ -188,9 +188,8 @@
 }
 
 .projectGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
   margin-top: 3rem;
 }
 
@@ -198,10 +197,12 @@
   background: rgba(26, 26, 46, 0.8);
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 3rem;
   text-align: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  max-width: 600px;
+  width: 100%;
 }
 
 .projectCard:hover {

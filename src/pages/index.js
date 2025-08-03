@@ -51,27 +51,9 @@ function ProjectSection() {
           <div className={styles.projectCard}>
             <div className={styles.projectIcon}>🔗</div>
             <h3>DiscordBM</h3>
-            <p>Инновационный плагин для интеграции Discord с Minecraft серверами</p>
-            <Link to="/docs/DiscordBM/DiscordBMV/Configs/settings" className={styles.projectLink}>
+            <p>Open-source фреймворк для создания масштабируемых Discord-ботов с архитектурой "сервер ↔ клиент". Разработан для высокой расширяемости и удобной интеграции с современными Discord-интерфейсами.</p>
+            <Link to="/docs/DiscordBM/dscordbm-main" className={styles.projectLink}>
               Узнать больше →
-            </Link>
-          </div>
-          
-          <div className={styles.projectCard}>
-            <div className={styles.projectIcon}>⚙️</div>
-            <h3>Конфигурации</h3>
-            <p>Примеры настроек и лучшие практики для ваших проектов</p>
-            <Link to="/docs/DiscordBM/DiscordBMV/Configs/settings" className={styles.projectLink}>
-              Изучить →
-            </Link>
-          </div>
-          
-          <div className={styles.projectCard}>
-            <div className={styles.projectIcon}>💡</div>
-            <h3>Советы и трюки</h3>
-            <p>Полезные знания для разработчиков и администраторов</p>
-            <Link to="/docs/1wairesd-info-main" className={styles.projectLink}>
-              Открыть →
             </Link>
           </div>
         </div>
