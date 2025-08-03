@@ -86,7 +86,7 @@ function StatsSection() {
       <div className="container">
         <div className={styles.statsGrid}>
           <div className={styles.statItem}>
-            <div className={styles.statNumber}>3+</div>
+            <div className={styles.statNumber}>1+</div>
             <div className={styles.statLabel}>Года опыта</div>
           </div>
           <div className={styles.statItem}>
