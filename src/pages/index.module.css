@@ -246,6 +246,42 @@
   text-decoration: none;
 }
 
+.projectButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.githubLink {
+  color: #6b7280;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+  background: transparent;
+}
+
+.githubLink:hover {
+  color: #374151;
+  background: rgba(107, 114, 128, 0.1);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+[data-theme='light'] .githubLink {
+  color: #6b7280;
+  border-color: rgba(107, 114, 128, 0.5);
+}
+
+[data-theme='light'] .githubLink:hover {
+  color: #374151;
+  background: rgba(107, 114, 128, 0.1);
+}
+
 .statsSection {
   padding: 5rem 0;
   background: var(--ifm-background-surface-color);

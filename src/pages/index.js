@@ -52,9 +52,14 @@ function ProjectSection() {
             <div className={styles.projectIcon}>🔗</div>
             <h3>DiscordBM</h3>
             <p>Open-source фреймворк для создания масштабируемых Discord-ботов с архитектурой "сервер ↔ клиент". Разработан для высокой расширяемости и удобной интеграции с современными Discord-интерфейсами.</p>
-            <Link to="/docs/DiscordBM/dscordbm-main" className={styles.projectLink}>
-              Узнать больше →
-            </Link>
+            <div className={styles.projectButtons}>
+              <Link to="/docs/DiscordBM/dscordbm-main" className={styles.projectLink}>
+                Узнать больше →
+              </Link>
+              <Link to="https://github.com/1wairesd/DiscordBM" className={styles.githubLink}>
+                🐙 GitHub
+              </Link>
+            </div>
           </div>
         </div>
       </div>
