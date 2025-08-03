@@ -54,11 +54,14 @@
   background-color: #8b5cf6;
   border-color: #7c3aed;
   color: white;
+  transition: all 0.3s ease;
 }
 
 [data-theme='dark'] .button:hover {
   background-color: #7c3aed;
   border-color: #6d28d9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 /* Подсветка текста в темной теме */
@@ -71,6 +74,11 @@
 [data-theme='dark'] .prism-code {
   background-color: #1a1a1a;
   border: 1px solid #333;
+  transition: border-color 0.3s ease;
+}
+
+[data-theme='dark'] .prism-code:hover {
+  border-color: #8b5cf6;
 }
 
 [data-theme='dark'] .prism-code .token.string {
@@ -88,6 +96,7 @@
 
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link {
   color: #8b5cf6;
+  transition: color 0.3s ease;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link:hover {
@@ -101,4 +110,186 @@
 
 [data-theme='dark'] h1::before, [data-theme='dark'] h2::before, [data-theme='dark'] h3::before {
   color: #8b5cf6;
+}
+
+/* ===== АНИМАЦИИ И ПЛАВНЫЕ ПЕРЕХОДЫ ===== */
+
+/* Плавные переходы для всех элементов */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Анимация появления страницы */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-doc-markdown {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Анимация для карточек и блоков */
+.card, .admonition, .alert {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover, .admonition:hover, .alert:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+/* Анимация для ссылок */
+a {
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Анимация для кнопок */
+.button, .btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
+}
+
+/* Эффект пульсации для важных элементов */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.important-element {
+  animation: pulse 2s infinite;
+}
+
+/* Анимация для навигации */
+.menu__link {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.menu__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+  transition: width 0.3s ease;
+}
+
+.menu__link:hover::after {
+  width: 100%;
+}
+
+/* Анимация для кода */
+pre {
+  transition: all 0.3s ease;
+}
+
+pre:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+/* Плавная прокрутка */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Оптимизация производительности */
+* {
+  will-change: auto;
+}
+
+/* Улучшение рендеринга */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Анимация загрузки */
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  animation: loading 1s linear infinite;
+}
+
+/* Эффект параллакса для фона */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Анимация для списков */
+ul, ol {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+li {
+  transition: transform 0.3s ease;
+}
+
+li:hover {
+  transform: translateX(5px);
+}
+
+/* Анимация для таблиц */
+table {
+  transition: all 0.3s ease;
+}
+
+table:hover {
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
+}
+
+/* Эффект свечения для активных элементов */
+.active-glow {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Анимация для модальных окон */
+.modal {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Улучшение отзывчивости на мобильных */
+@media (max-width: 768px) {
+  * {
+    transition: none !important;
+  }
+  
+  .card:hover, .admonition:hover, .alert:hover {
+    transform: none;
+  }
 }
