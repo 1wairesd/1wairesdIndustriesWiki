@@ -19,12 +19,86 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #8b5cf6;
+  --ifm-color-primary-dark: #7c3aed;
+  --ifm-color-primary-darker: #6d28d9;
+  --ifm-color-primary-darkest: #5b21b6;
+  --ifm-color-primary-light: #a78bfa;
+  --ifm-color-primary-lighter: #c4b5fd;
+  --ifm-color-primary-lightest: #ddd6fe;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Фиолетовые акценты для темной темы */
+[data-theme='dark'] {
+  /* Подсветка активных элементов навигации */
+  --ifm-menu-color-active: #8b5cf6;
+  --ifm-menu-color-background-active: rgba(139, 92, 246, 0.1);
+  
+  /* Цвета для кнопок и ссылок */
+  --ifm-link-color: #a78bfa;
+  --ifm-link-hover-color: #c4b5fd;
+  
+  /* Подсветка кода */
+  --ifm-code-background: rgba(139, 92, 246, 0.1);
+  --ifm-code-color: #c4b5fd;
+  
+  /* Цвета для admonitions */
+  --ifm-alert-color: #8b5cf6;
+  --ifm-alert-border-color: #7c3aed;
+  --ifm-alert-background-color: rgba(139, 92, 246, 0.1);
+}
+
+/* Стили для кнопок в темной теме */
+[data-theme='dark'] .button {
+  background-color: #8b5cf6;
+  border-color: #7c3aed;
+  color: white;
+}
+
+[data-theme='dark'] .button:hover {
+  background-color: #7c3aed;
+  border-color: #6d28d9;
+}
+
+/* Подсветка текста в темной теме */
+[data-theme='dark'] ::selection {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: white;
+}
+
+/* Стили для блоков кода */
+[data-theme='dark'] .prism-code {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+}
+
+[data-theme='dark'] .prism-code .token.string {
+  color: #a78bfa;
+}
+
+[data-theme='dark'] .prism-code .token.keyword {
+  color: #c4b5fd;
+}
+
+/* Стили для sidebar в темной теме */
+[data-theme='dark'] .theme-doc-sidebar-menu {
+  background-color: #1a1a1a;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link {
+  color: #8b5cf6;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link:hover {
+  color: #a78bfa;
+}
+
+/* Стили для заголовков в темной теме */
+[data-theme='dark'] h1, [data-theme='dark'] h2, [data-theme='dark'] h3 {
+  color: #e5e7eb;
+}
+
+[data-theme='dark'] h1::before, [data-theme='dark'] h2::before, [data-theme='dark'] h3::before {
+  color: #8b5cf6;
 }
