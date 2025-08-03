@@ -130,6 +130,63 @@
   width: 100%;
 }
 
+/* Плавное появление правой панели */
+.theme-doc-sidebar {
+  animation: slideInRight 0.5s ease-out;
+  transform-origin: right center;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Плавное появление основного контента */
+.theme-doc-main {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Плавное появление навигации */
+.navbar {
+  animation: slideInDown 0.4s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Плавное появление для иконок в боковой панели */
+.theme-doc-sidebar-item-link-level-1 .menu__link,
+.theme-doc-sidebar-item-link-level-2 .menu__link,
+.theme-doc-sidebar-item-link-level-3 .menu__link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
 /* Улучшение производительности */
 * {
   box-sizing: border-box;
