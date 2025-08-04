@@ -14,7 +14,7 @@
 }
 
 .modal {
-  background: #0f0f0f;
+  background: #1a1a2e;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   max-width: 600px;
@@ -22,7 +22,7 @@
   max-height: 80vh;
   overflow: hidden;
   animation: slideIn 0.3s ease-out;
-  border: 1px solid #3a3a3a;
+  border: 1px solid #0f3460;
 }
 
 .header {
@@ -30,8 +30,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  border-bottom: 1px solid #3a3a3a;
-  background: #1a1a1a;
+  border-bottom: 1px solid #0f3460;
+  background: #16213e;
 }
 
 .header h2 {
@@ -85,7 +85,7 @@
 .platformSelect {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid #3a3a3a;
+  border: 2px solid #0f3460;
   border-radius: 8px;
   background: var(--ifm-background-color);
   color: #ffffff;
@@ -120,8 +120,8 @@
 
 .footer {
   padding: 1rem 1.5rem;
-  border-top: 1px solid #3a3a3a;
-  background: #1a1a1a;
+  border-top: 1px solid #0f3460;
+  background: #16213e;
   display: flex;
   justify-content: center;
 }
