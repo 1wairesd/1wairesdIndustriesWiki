@@ -137,13 +137,6 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
-
-  scripts: [
-    {
-      src: '/js/navbar-scroll.js',
-      async: true,
-    },
-  ],
 };
 
 export default config;
