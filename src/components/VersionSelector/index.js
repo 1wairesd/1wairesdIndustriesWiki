@@ -56,6 +56,36 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
     return asset ? asset.browser_download_url : null;
   };
 
+  const getDownloadCount = (version) => {
+    if (version === 'latest') {
+      const latestRelease = versions[0];
+      if (!latestRelease) return 0;
+      
+      const asset = latestRelease.assets.find(asset => 
+        asset.name.toLowerCase().includes(platform.toLowerCase())
+      );
+      return asset ? asset.download_count : 0;
+    }
+    
+    const release = versions.find(v => v.tag_name === version);
+    if (!release) return 0;
+    
+    const asset = release.assets.find(asset => 
+      asset.name.toLowerCase().includes(platform.toLowerCase())
+    );
+    
+    return asset ? asset.download_count : 0;
+  };
+
+  const formatDownloadCount = (count) => {
+    if (count >= 1000000) {
+      return `${(count / 1000000).toFixed(1)}M`;
+    } else if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}K`;
+    }
+    return count.toString();
+  };
+
   const handleDownload = () => {
     const url = getDownloadUrl(selectedVersion);
     if (url) {
@@ -101,11 +131,17 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
           <option value="latest">
             🚀 Последняя версия {latestVersion ? `(${latestVersion})` : ''}
           </option>
-          {versions.map((release) => (
-            <option key={release.id} value={release.tag_name}>
-              📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')}
-            </option>
-          ))}
+          {versions.map((release) => {
+            const asset = release.assets.find(asset => 
+              asset.name.toLowerCase().includes(platform.toLowerCase())
+            );
+            const downloadCount = asset ? asset.download_count : 0;
+            return (
+              <option key={release.id} value={release.tag_name}>
+                📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} ({formatDownloadCount(downloadCount)})
+              </option>
+            );
+          })}
         </select>
         
         <button 
@@ -115,6 +151,12 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         >
           📥 Скачать
         </button>
+      </div>
+      
+      <div className={styles.stats}>
+        <span className={styles.downloadCount}>
+          📊 {formatDownloadCount(getDownloadCount(selectedVersion))} скачиваний
+        </span>
       </div>
       
       <div className={styles.links}>

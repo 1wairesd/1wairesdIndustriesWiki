@@ -88,6 +88,25 @@
   text-decoration: underline;
 }
 
+.stats {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+[data-theme='light'] .stats {
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.downloadCount {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
 .loading {
   display: flex;
   align-items: center;
