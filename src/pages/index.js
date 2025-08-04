@@ -5,7 +5,6 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 import { useEffect } from 'react';
-import VersionSelector from '@site/src/components/VersionSelector';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
