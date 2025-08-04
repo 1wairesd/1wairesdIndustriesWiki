@@ -157,12 +157,10 @@ body {
   background: var(--ifm-navbar-background-color);
 }
 
-/* Базовые настройки navbar */
 .navbar {
   z-index: 1000 !important;
 }
 
-/* Стеклянный эффект только для десктопа */
 @media (min-width: 997px) {
   .navbar.scrolled {
     backdrop-filter: blur(15px);
@@ -185,7 +183,6 @@ body {
   }
 }
 
-/* Отключаем все эффекты на мобильных */
 @media (max-width: 996px) {
   .navbar {
     background: var(--ifm-navbar-background-color) !important;
@@ -201,9 +198,7 @@ body {
     border-bottom: none !important;
   }
   
-  /* Убираем все переопределения мобильного меню */
   .navbar-sidebar {
-    /* Оставляем стандартное поведение Docusaurus */
   }
 }
 
