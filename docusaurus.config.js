@@ -93,17 +93,6 @@ const config = {
             position: 'left',
             label: 'Документация',
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'right',
-            label: 'DiscordBM',
-          },
-          {
-            href: 'https://github.com/1wairesd',
-            position: 'right',
-            label: 'GitHub',
-          },
         ],
       },
       footer: {
