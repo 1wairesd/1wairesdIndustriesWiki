@@ -157,24 +157,54 @@ body {
   background: var(--ifm-navbar-background-color);
 }
 
-.navbar.scrolled {
-  backdrop-filter: blur(15px);
-  background: rgba(var(--ifm-navbar-background-color-rgb), 0.25);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* Базовые настройки navbar */
+.navbar {
+  z-index: 1000 !important;
 }
 
-[data-theme='light'] .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+/* Стеклянный эффект только для десктопа */
+@media (min-width: 997px) {
+  .navbar.scrolled {
+    backdrop-filter: blur(15px);
+    background: rgba(var(--ifm-navbar-background-color-rgb), 0.25);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-theme='light'] .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  }
+
+  [data-theme='dark'] .navbar.scrolled {
+    background: rgba(26, 26, 46, 0.35);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  }
 }
 
-[data-theme='dark'] .navbar.scrolled {
-  background: rgba(26, 26, 46, 0.35);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+/* Отключаем все эффекты на мобильных */
+@media (max-width: 996px) {
+  .navbar {
+    background: var(--ifm-navbar-background-color) !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+  }
+  
+  .navbar.scrolled {
+    background: var(--ifm-navbar-background-color) !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+  }
+  
+  /* Убираем все переопределения мобильного меню */
+  .navbar-sidebar {
+    /* Оставляем стандартное поведение Docusaurus */
+  }
 }
 
 .navbar.scrolled ~ * {
@@ -243,75 +273,4 @@ body {
 [data-theme='dark'] .theme-doc-page .navbar.scrolled {
   background: rgba(26, 26, 46, 0.6);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Полное решение для мобильного меню */
-@media (max-width: 996px) {
-  /* Принудительно позиционируем меню поверх всего */
-  .navbar-sidebar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    z-index: 99999 !important;
-    background: var(--ifm-background-color) !important;
-    transform: translateX(-100%) !important;
-    transition: transform 0.3s ease-in-out !important;
-    overflow: hidden !important;
-  }
-
-  /* Показываем меню при активации */
-  .navbar-sidebar--show {
-    transform: translateX(0) !important;
-  }
-
-  /* Контейнер для элементов меню */
-  .navbar-sidebar__items {
-    position: absolute !important;
-    top: 60px !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    padding: 1rem !important;
-    overflow-y: auto !important;
-    background: var(--ifm-background-color) !important;
-  }
-
-  /* Стили для элементов меню */
-  .navbar-sidebar__item {
-    margin: 0.5rem 0 !important;
-    padding: 0 !important;
-  }
-
-  .navbar-sidebar__item .menu__link {
-    display: block !important;
-    padding: 1rem !important;
-    margin: 0.25rem 0 !important;
-    border-radius: 8px !important;
-    background: var(--ifm-color-emphasis-100) !important;
-    color: var(--ifm-color-content) !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-  }
-
-  .navbar-sidebar__item .menu__link:hover {
-    background: var(--ifm-color-emphasis-200) !important;
-    text-decoration: none !important;
-  }
-
-  /* Скрываем стандартный navbar при открытом меню */
-  .navbar-sidebar--show ~ .navbar {
-    display: none !important;
-  }
-}
-
-/* Отключаем стеклянный эффект на мобильных */
-@media (max-width: 996px) {
-  .navbar.scrolled {
-    backdrop-filter: none !important;
-    background: var(--ifm-navbar-background-color) !important;
-  }
 }
