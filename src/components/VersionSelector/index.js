@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platform = 'Velocity' }) => {
   const [versions, setVersions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedVersion, setSelectedVersion] = useState('latest');
+  const [selectedVersion, setSelectedVersion] = useState('');
   const [error, setError] = useState(null);
   const [latestVersion, setLatestVersion] = useState(null);
   const [latestAssetName, setLatestAssetName] = useState(null);
@@ -29,7 +29,9 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         
         setVersions(filteredReleases);
         
+
         if (filteredReleases.length > 0) {
+          setSelectedVersion(filteredReleases[0].tag_name);
           const latestRelease = filteredReleases[0];
           setLatestVersion(latestRelease.tag_name);
           
@@ -51,10 +53,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   }, [repoOwner, repoName, platform]);
 
   const getDownloadUrl = (version) => {
-    if (version === 'latest') {
-      return `https://github.com/${repoOwner}/${repoName}/releases/latest/download/DiscordBM-${platform}.jar`;
-    }
-    
     const release = versions.find(v => v.tag_name === version);
     if (!release) return null;
     
@@ -66,16 +64,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   };
 
   const getDownloadCount = (version) => {
-    if (version === 'latest') {
-      const latestRelease = versions[0];
-      if (!latestRelease) return 0;
-      
-      const asset = latestRelease.assets.find(asset => 
-        asset.name.toLowerCase().includes(platform.toLowerCase())
-      );
-      return asset ? asset.download_count : 0;
-    }
-    
     const release = versions.find(v => v.tag_name === version);
     if (!release) return 0;
     
@@ -135,6 +123,24 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
     );
   }
 
+  if (versions.length === 0) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.noVersions}>
+          <span>📦 Версий для {platform} пока нет</span>
+          <a 
+            href={`https://github.com/${repoOwner}/${repoName}/releases`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
+            📋 Проверить на GitHub
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.selector}>
@@ -143,9 +149,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
           onChange={(e) => setSelectedVersion(e.target.value)}
           className={styles.select}
         >
-          <option value="latest">
-            🚀 Последняя версия {latestVersion ? `(${latestVersion})` : ''} {latestAssetName ? `- v${extractVersionFromFileName(latestAssetName) || 'latest'}` : ''}
-          </option>
           {versions.map((release) => {
             const asset = release.assets.find(asset => 
               asset.name.toLowerCase().includes(platform.toLowerCase())
@@ -173,11 +176,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         <span className={styles.downloadCount}>
           📊 {formatDownloadCount(getDownloadCount(selectedVersion))} скачиваний
         </span>
-        {selectedVersion === 'latest' && latestAssetName && (
-          <span className={styles.versionInfo}>
-            📦 Версия файла: {extractVersionFromFileName(latestAssetName) || 'latest'}
-          </span>
-        )}
       </div>
       
       <div className={styles.links}>

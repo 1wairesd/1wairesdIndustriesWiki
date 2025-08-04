@@ -115,6 +115,20 @@
   display: block;
 }
 
+.noVersions {
+  text-align: center;
+  padding: 2rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.noVersions span {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
 .loading {
   display: flex;
   align-items: center;
