@@ -257,9 +257,10 @@ body {
     width: 100vw;
     height: 100vh;
     background: var(--ifm-background-color);
-    z-index: 1000;
+    z-index: 9999;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .navbar-sidebar--show {
@@ -269,10 +270,12 @@ body {
   .navbar-sidebar__brand {
     padding: 1rem;
     border-bottom: 1px solid var(--ifm-color-emphasis-300);
+    background: var(--ifm-background-color);
   }
   
   .navbar-sidebar__items {
     padding: 1rem;
+    background: var(--ifm-background-color);
   }
   
   .navbar-sidebar__item {
@@ -283,9 +286,11 @@ body {
     padding: 0.75rem 1rem;
     border-radius: 8px;
     transition: background-color 0.2s ease;
+    color: var(--ifm-color-content);
   }
   
   .navbar-sidebar__link:hover {
     background: var(--ifm-color-emphasis-100);
+    color: var(--ifm-color-content);
   }
 }
