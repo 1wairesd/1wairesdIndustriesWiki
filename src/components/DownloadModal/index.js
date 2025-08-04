@@ -28,13 +28,15 @@ const DownloadModal = ({ isOpen, onClose }) => {
   const platforms = [
     { id: 'Velocity', name: '🚀 Velocity', description: 'Для Velocity серверов' },
     { id: 'Bukkit', name: '🏗️ Bukkit', description: 'Для Bukkit/Spigot серверов' },
+    { id: 'DBMDonateCase', name: '💰 DBMDonateCase', description: 'Аддон для донат-кейсов' },
+    { id: 'DBMGuiManager', name: '🎛️ DBMGuiManager', description: 'Аддон для GUI менеджера' },
   ];
 
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>📥 Загрузки DiscordBM</h2>
+          <h2>📥 Загрузки DiscordBM & Аддоны</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ✕
           </button>

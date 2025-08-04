@@ -93,10 +93,6 @@ const config = {
             position: 'left',
             label: 'Документация',
           },
-          {
-            type: 'custom-download',
-            position: 'right',
-          },
         ],
       },
       footer: {

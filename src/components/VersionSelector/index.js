@@ -21,11 +21,22 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         
         const releases = await response.json();
         
-        const filteredReleases = releases.filter(release => 
-          release.assets.some(asset => 
-            asset.name.toLowerCase().includes(platform.toLowerCase())
-          )
-        );
+                            const filteredReleases = releases.filter(release => 
+                      release.assets.some(asset => {
+                        const assetName = asset.name.toLowerCase();
+                        const platformLower = platform.toLowerCase();
+                        
+                        // Специальная обработка для аддонов
+                        if (platform === 'DBMDonateCase') {
+                          return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
+                        }
+                        if (platform === 'DBMGuiManager') {
+                          return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
+                        }
+                        
+                        return assetName.includes(platformLower);
+                      })
+                    );
         
         setVersions(filteredReleases);
         
@@ -56,9 +67,20 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
     const release = versions.find(v => v.tag_name === version);
     if (!release) return null;
     
-    const asset = release.assets.find(asset => 
-      asset.name.toLowerCase().includes(platform.toLowerCase())
-    );
+    const asset = release.assets.find(asset => {
+      const assetName = asset.name.toLowerCase();
+      const platformLower = platform.toLowerCase();
+      
+      // Специальная обработка для аддонов
+      if (platform === 'DBMDonateCase') {
+        return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
+      }
+      if (platform === 'DBMGuiManager') {
+        return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
+      }
+      
+      return assetName.includes(platformLower);
+    });
     
     return asset ? asset.browser_download_url : null;
   };
@@ -67,9 +89,20 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
     const release = versions.find(v => v.tag_name === version);
     if (!release) return 0;
     
-    const asset = release.assets.find(asset => 
-      asset.name.toLowerCase().includes(platform.toLowerCase())
-    );
+    const asset = release.assets.find(asset => {
+      const assetName = asset.name.toLowerCase();
+      const platformLower = platform.toLowerCase();
+      
+      // Специальная обработка для аддонов
+      if (platform === 'DBMDonateCase') {
+        return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
+      }
+      if (platform === 'DBMGuiManager') {
+        return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
+      }
+      
+      return assetName.includes(platformLower);
+    });
     
     return asset ? asset.download_count : 0;
   };
@@ -149,18 +182,29 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
           onChange={(e) => setSelectedVersion(e.target.value)}
           className={styles.select}
         >
-          {versions.map((release) => {
-            const asset = release.assets.find(asset => 
-              asset.name.toLowerCase().includes(platform.toLowerCase())
-            );
-            const downloadCount = asset ? asset.download_count : 0;
-            const fileVersion = extractVersionFromFileName(asset ? asset.name : '');
-            return (
-              <option key={release.id} value={release.tag_name}>
-                📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} {fileVersion ? `(v${fileVersion})` : ''} ({formatDownloadCount(downloadCount)})
-              </option>
-            );
-          })}
+                                {versions.map((release) => {
+                        const asset = release.assets.find(asset => {
+                          const assetName = asset.name.toLowerCase();
+                          const platformLower = platform.toLowerCase();
+                          
+                          // Специальная обработка для аддонов
+                          if (platform === 'DBMDonateCase') {
+                            return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
+                          }
+                          if (platform === 'DBMGuiManager') {
+                            return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
+                          }
+                          
+                          return assetName.includes(platformLower);
+                        });
+                        const downloadCount = asset ? asset.download_count : 0;
+                        const fileVersion = extractVersionFromFileName(asset ? asset.name : '');
+                        return (
+                          <option key={release.id} value={release.tag_name}>
+                            📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} {fileVersion ? `(v${fileVersion})` : ''} ({formatDownloadCount(downloadCount)})
+                          </option>
+                        );
+                      })}
         </select>
         
         <button 
