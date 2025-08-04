@@ -109,8 +109,8 @@
 }
 
 [data-theme='light'] .stats {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: rgba(44, 44, 44, 0.3);
+  border: 1px solid rgba(44, 44, 44, 0.3);
 }
 
 .downloadCount {
