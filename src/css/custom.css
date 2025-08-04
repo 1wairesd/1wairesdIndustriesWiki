@@ -29,23 +29,23 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   
   /* Grok AI - темная схема */
-  --ifm-background-color: #0a0a0a;
-  --ifm-background-surface-color: #1a1a1a;
+  --ifm-background-color: #2e2e2e;
+  --ifm-background-surface-color: #3a3a3a;
   --ifm-color-content: #ffffff;
   --ifm-color-content-secondary: #b0b0b0;
-  --ifm-color-emphasis-100: #1a1a1a;
-  --ifm-color-emphasis-200: #2a2a2a;
-  --ifm-color-emphasis-300: #3a3a3a;
-  --ifm-color-emphasis-400: #4a4a4a;
-  --ifm-color-emphasis-500: #5a5a5a;
-  --ifm-color-emphasis-600: #6a6a6a;
-  --ifm-color-emphasis-700: #7a7a7a;
-  --ifm-color-emphasis-800: #8a8a8a;
-  --ifm-color-emphasis-900: #9a9a9a;
-  --ifm-card-background-color: #1a1a1a;
-  --ifm-navbar-background-color: #0a0a0a;
-  --ifm-footer-background-color: #0a0a0a;
-  --ifm-color-emphasis-0: #0a0a0a;
+  --ifm-color-emphasis-100: #3a3a3a;
+  --ifm-color-emphasis-200: #4a4a4a;
+  --ifm-color-emphasis-300: #5a5a5a;
+  --ifm-color-emphasis-400: #6a6a6a;
+  --ifm-color-emphasis-500: #7a7a7a;
+  --ifm-color-emphasis-600: #8a8a8a;
+  --ifm-color-emphasis-700: #9a9a9a;
+  --ifm-color-emphasis-800: #aaaaaa;
+  --ifm-color-emphasis-900: #bababa;
+  --ifm-card-background-color: #3a3a3a;
+  --ifm-navbar-background-color: #2e2e2e;
+  --ifm-footer-background-color: #2e2e2e;
+  --ifm-color-emphasis-0: #2e2e2e;
 }
 
 [data-theme='dark'] {
@@ -76,12 +76,12 @@
 
 [data-theme='dark'] ::selection {
   background-color: rgba(255, 255, 255, 0.3);
-  color: #000000;
+  color: #313131;
 }
 
 [data-theme='dark'] .prism-code {
-  background-color: #1a1a1a;
-  border: 1px solid #3a3a3a;
+  background-color: #3a3a3a;
+  border: 1px solid #5a5a5a;
 }
 
 [data-theme='dark'] .prism-code .token.string {
@@ -93,7 +93,7 @@
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu {
-  background-color: #0a0a0a;
+  background-color: #2e2e2e;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link {
@@ -173,7 +173,7 @@ body {
 .navbar {
   transition: all 0.3s ease;
   backdrop-filter: blur(0px);
-  background: #0a0a0a;
+  background: #2e2e2e;
 }
 
 .navbar {
@@ -196,7 +196,7 @@ body {
   }
 
   [data-theme='dark'] .navbar.scrolled {
-    background: rgba(10, 10, 10, 0.9);
+    background: rgba(46, 46, 46, 0.9);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
@@ -204,14 +204,14 @@ body {
 
 @media (max-width: 996px) {
   .navbar {
-    background: #474747 !important;
+    background: #2e2e2e !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border-bottom: none !important;
   }
   
   .navbar.scrolled {
-    background: #0a0a0a !important;
+    background: #2e2e2e !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border-bottom: none !important;
