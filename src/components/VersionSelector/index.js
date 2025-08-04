@@ -204,7 +204,7 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
             rel="noopener noreferrer"
             className={styles.link}
           >
-            📋 Проверить на GitHub
+             Проверить на GitHub
           </a>
         </div>
       </div>

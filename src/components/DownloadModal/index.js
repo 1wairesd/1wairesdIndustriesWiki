@@ -69,17 +69,6 @@ const DownloadModal = ({ isOpen, onClose }) => {
             <VersionSelector platform={activePlatform} />
           </div>
         </div>
-        
-        <div className={styles.footer}>
-          <a 
-            href="https://github.com/1wairesd/DiscordBM/releases"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.githubLink}
-          >
-            Все версии на GitHub
-          </a>
-        </div>
       </div>
     </div>
   );
