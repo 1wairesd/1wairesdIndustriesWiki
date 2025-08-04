@@ -11,10 +11,10 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
 
   const getPlatformDisplayName = (platform) => {
     const platformNames = {
-      'Velocity': '🚀 Velocity',
-      'Bukkit': '🏗️ Bukkit',
-      'DBMDonateCase': '💰 DBMDonateCase',
-      'DBMGuiManager': '🎛️ DBMGuiManager'
+      'Velocity': 'Velocity',
+      'Bukkit': 'Bukkit',
+      'DBMDonateCase': 'DBMDonateCase',
+      'DBMGuiManager': 'DBMGuiManager'
     };
     return platformNames[platform] || platform;
   };
@@ -36,7 +36,13 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
                         const assetName = asset.name.toLowerCase();
                         const platformLower = platform.toLowerCase();
                         
-                        // Специальная обработка для аддонов
+                        // Специальная обработка для платформ
+                        if (platform === 'Velocity') {
+                          return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
+                        }
+                        if (platform === 'Bukkit') {
+                          return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
+                        }
                         if (platform === 'DBMDonateCase') {
                           return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
                         }
@@ -81,7 +87,13 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
       const assetName = asset.name.toLowerCase();
       const platformLower = platform.toLowerCase();
       
-      // Специальная обработка для аддонов
+      // Специальная обработка для платформ
+      if (platform === 'Velocity') {
+        return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
+      }
+      if (platform === 'Bukkit') {
+        return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
+      }
       if (platform === 'DBMDonateCase') {
         return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
       }
@@ -103,7 +115,13 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
       const assetName = asset.name.toLowerCase();
       const platformLower = platform.toLowerCase();
       
-      // Специальная обработка для аддонов
+      // Специальная обработка для платформ
+      if (platform === 'Velocity') {
+        return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
+      }
+      if (platform === 'Bukkit') {
+        return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
+      }
       if (platform === 'DBMDonateCase') {
         return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
       }
@@ -209,7 +227,13 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
                           const assetName = asset.name.toLowerCase();
                           const platformLower = platform.toLowerCase();
                           
-                          // Специальная обработка для аддонов
+                          // Специальная обработка для платформ
+                          if (platform === 'Velocity') {
+                            return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
+                          }
+                          if (platform === 'Bukkit') {
+                            return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
+                          }
                           if (platform === 'DBMDonateCase') {
                             return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
                           }

@@ -26,10 +26,10 @@ const DownloadModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const platforms = [
-    { id: 'Velocity', name: '🚀 Velocity', description: 'Для Velocity серверов' },
-    { id: 'Bukkit', name: '🏗️ Bukkit', description: 'Для Bukkit/Spigot серверов' },
-    { id: 'DBMDonateCase', name: '💰 DBMDonateCase', description: 'Аддон для донат-кейсов' },
-    { id: 'DBMGuiManager', name: '🎛️ DBMGuiManager', description: 'Аддон для GUI менеджера' },
+    { id: 'Velocity', name: 'DiscordBM-Velocity' },
+    { id: 'Bukkit', name: 'DiscordBM-Bukkit' },
+    { id: 'DBMDonateCase', name: 'DBMDonateCase' },
+    { id: 'DBMGuiManager', name: 'DBMGuiManager' },
   ];
 
   const handlePlatformChange = (platformId) => {
@@ -59,7 +59,7 @@ const DownloadModal = ({ isOpen, onClose }) => {
             >
               {platforms.map((platform) => (
                 <option key={platform.id} value={platform.id}>
-                  {platform.name} - {platform.description}
+                  {platform.name}
                 </option>
               ))}
             </select>
