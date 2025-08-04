@@ -85,10 +85,10 @@
 .platformSelect {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid var(--ifm-color-emphasis-300);
+  border: 2px solid #3a3a3a;
   border-radius: 8px;
   background: var(--ifm-background-color);
-  color: var(--ifm-color-content);
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -97,12 +97,12 @@
 }
 
 .platformSelect:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: #ffffff;
 }
 
 .platformSelect:focus {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
 [data-theme='light'] .platformSelect {
@@ -127,7 +127,7 @@
 }
 
 .githubLink {
-  color: var(--ifm-color-primary);
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -136,12 +136,12 @@
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  border: 1px solid var(--ifm-color-primary);
+  border: 1px solid #ffffff;
 }
 
 .githubLink:hover {
-  background: var(--ifm-color-primary);
-  color: white;
+  background: #ffffff;
+  color: #000000;
   text-decoration: none;
 }
 
