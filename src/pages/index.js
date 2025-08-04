@@ -8,20 +8,19 @@ import { useEffect } from 'react';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
-
+  
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
       if (navbar) {
-        if (window.scrollY <= 10) {
+        if (window.scrollY > 10) {
           navbar.classList.add('scrolled');
         } else {
           navbar.classList.remove('scrolled');
         }
       }
     };
-    handleScroll();
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
