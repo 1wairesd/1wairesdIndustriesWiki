@@ -6,6 +6,7 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   const [loading, setLoading] = useState(true);
   const [selectedVersion, setSelectedVersion] = useState('latest');
   const [error, setError] = useState(null);
+  const [latestVersion, setLatestVersion] = useState(null);
 
   useEffect(() => {
     const fetchVersions = async () => {
@@ -19,7 +20,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         
         const releases = await response.json();
         
-        // Фильтруем релизы, которые содержат файлы для нужной платформы
         const filteredReleases = releases.filter(release => 
           release.assets.some(asset => 
             asset.name.toLowerCase().includes(platform.toLowerCase())
@@ -27,6 +27,10 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         );
         
         setVersions(filteredReleases);
+        
+        if (filteredReleases.length > 0) {
+          setLatestVersion(filteredReleases[0].tag_name);
+        }
       } catch (err) {
         setError(err.message);
       } finally {
@@ -94,7 +98,9 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
           onChange={(e) => setSelectedVersion(e.target.value)}
           className={styles.select}
         >
-          <option value="latest">🚀 Последняя версия</option>
+          <option value="latest">
+            🚀 Последняя версия {latestVersion ? `(${latestVersion})` : ''}
+          </option>
           {versions.map((release) => (
             <option key={release.id} value={release.tag_name}>
               📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')}
