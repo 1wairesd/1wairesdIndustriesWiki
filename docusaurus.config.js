@@ -99,7 +99,7 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Документация',
             items: [
               {
                 label: 'Документация',
@@ -108,7 +108,7 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Сообщество',
             items: [
               {
                 label: 'Discord',
@@ -117,7 +117,7 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: 'Больше',
             items: [
               {
                 label: '1wairesd GitHub',
