@@ -9,6 +9,16 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   const [latestVersion, setLatestVersion] = useState(null);
   const [latestAssetName, setLatestAssetName] = useState(null);
 
+  const getPlatformDisplayName = (platform) => {
+    const platformNames = {
+      'Velocity': '🚀 Velocity',
+      'Bukkit': '🏗️ Bukkit',
+      'DBMDonateCase': '💰 DBMDonateCase',
+      'DBMGuiManager': '🎛️ DBMGuiManager'
+    };
+    return platformNames[platform] || platform;
+  };
+
   useEffect(() => {
     const fetchVersions = async () => {
       try {
@@ -132,6 +142,9 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   if (loading) {
     return (
       <div className={styles.container}>
+        <div className={styles.platformHeader}>
+          <h3>{getPlatformDisplayName(platform)}</h3>
+        </div>
         <div className={styles.loading}>
           <div className={styles.spinner}></div>
           <span>Загрузка версий...</span>
@@ -143,6 +156,9 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   if (error) {
     return (
       <div className={styles.container}>
+        <div className={styles.platformHeader}>
+          <h3>{getPlatformDisplayName(platform)}</h3>
+        </div>
         <div className={styles.error}>
           <span>⚠️ {error}</span>
           <button 
@@ -159,6 +175,9 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   if (versions.length === 0) {
     return (
       <div className={styles.container}>
+        <div className={styles.platformHeader}>
+          <h3>{getPlatformDisplayName(platform)}</h3>
+        </div>
         <div className={styles.noVersions}>
           <span>📦 Версий для {platform} пока нет</span>
           <a 
@@ -176,6 +195,9 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
 
   return (
     <div className={styles.container}>
+      <div className={styles.platformHeader}>
+        <h3>{getPlatformDisplayName(platform)}</h3>
+      </div>
       <div className={styles.selector}>
         <select 
           value={selectedVersion} 

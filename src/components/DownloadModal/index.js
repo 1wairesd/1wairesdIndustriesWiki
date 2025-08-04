@@ -4,7 +4,6 @@ import styles from './styles.module.css';
 
 const DownloadModal = ({ isOpen, onClose }) => {
   const [activePlatform, setActivePlatform] = useState('Velocity');
-  const tabsRef = React.useRef(null);
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -35,39 +34,35 @@ const DownloadModal = ({ isOpen, onClose }) => {
 
   const handlePlatformChange = (platformId) => {
     setActivePlatform(platformId);
-    
-    // Автоматическая прокрутка к активной вкладке
-    setTimeout(() => {
-      const activeTab = tabsRef.current?.querySelector(`[data-platform="${platformId}"]`);
-      if (activeTab) {
-        activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }, 100);
   };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>📥 Загрузки DiscordBM & Аддоны</h2>
+          <h2>📥 Загрузки DiscordBM</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ✕
           </button>
         </div>
         
         <div className={styles.content}>
-          <div className={styles.platformTabs} ref={tabsRef}>
-            {platforms.map((platform) => (
-              <button
-                key={platform.id}
-                data-platform={platform.id}
-                className={`${styles.tab} ${activePlatform === platform.id ? styles.active : ''}`}
-                onClick={() => handlePlatformChange(platform.id)}
-              >
-                <span className={styles.tabName}>{platform.name}</span>
-                <span className={styles.tabDescription}>{platform.description}</span>
-              </button>
-            ))}
+          <div className={styles.platformSelector}>
+            <label htmlFor="platform-select" className={styles.platformLabel}>
+              Выберите платформу:
+            </label>
+            <select
+              id="platform-select"
+              value={activePlatform}
+              onChange={(e) => handlePlatformChange(e.target.value)}
+              className={styles.platformSelect}
+            >
+              {platforms.map((platform) => (
+                <option key={platform.id} value={platform.id}>
+                  {platform.name} - {platform.description}
+                </option>
+              ))}
+            </select>
           </div>
           
           <div className={styles.downloadSection}>

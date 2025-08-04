@@ -68,85 +68,50 @@
   max-height: 60vh;
 }
 
-.platformTabs {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0.75rem;
+.platformSelector {
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-300);
   padding-bottom: 1rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-behavior: smooth;
-  padding: 0 0.5rem 1rem 0.5rem;
-  position: relative;
 }
 
-.platformTabs::-webkit-scrollbar {
-  display: none;
+.platformLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--ifm-color-content);
+  font-size: 1rem;
 }
 
-/* Индикаторы прокрутки */
-.platformTabs::before,
-.platformTabs::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 20px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.platformTabs::before {
-  left: 0;
-  background: linear-gradient(to right, var(--ifm-background-color), transparent);
-}
-
-.platformTabs::after {
-  right: 0;
-  background: linear-gradient(to left, var(--ifm-background-color), transparent);
-}
-
-.tab {
-  background: none;
-  border: none;
+.platformSelect {
+  width: 100%;
   padding: 0.75rem 1rem;
+  border: 2px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-content);
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  min-width: 140px;
-  max-width: 160px;
-  flex-shrink: 0;
-  border: 2px solid transparent;
-  white-space: nowrap;
+  outline: none;
 }
 
-.tab:hover {
-  background: var(--ifm-color-emphasis-100);
-}
-
-.tab.active {
-  background: var(--ifm-color-primary);
-  color: white;
+.platformSelect:hover {
   border-color: var(--ifm-color-primary);
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
-.tabName {
-  font-weight: 600;
-  font-size: 0.9rem;
+.platformSelect:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
-.tabDescription {
-  font-size: 0.75rem;
-  opacity: 0.8;
+[data-theme='light'] .platformSelect {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .platformSelect:hover {
+  border-color: var(--ifm-color-primary);
 }
 
 .downloadSection {
@@ -207,22 +172,12 @@
     max-height: 90vh;
   }
   
-  .platformTabs {
-    gap: 0.5rem;
-    padding: 0 0.25rem 1rem 0.25rem;
+  .platformSelect {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
   }
   
-  .tab {
-    min-width: 120px;
-    max-width: 140px;
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .tabName {
-    font-size: 0.8rem;
-  }
-  
-  .tabDescription {
-    font-size: 0.7rem;
+  .platformLabel {
+    font-size: 0.9rem;
   }
 } 
