@@ -107,6 +107,14 @@
   font-size: 0.9rem;
 }
 
+.versionInfo {
+  color: var(--ifm-color-content-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
 .loading {
   display: flex;
   align-items: center;

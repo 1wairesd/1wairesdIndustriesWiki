@@ -7,6 +7,7 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   const [selectedVersion, setSelectedVersion] = useState('latest');
   const [error, setError] = useState(null);
   const [latestVersion, setLatestVersion] = useState(null);
+  const [latestAssetName, setLatestAssetName] = useState(null);
 
   useEffect(() => {
     const fetchVersions = async () => {
@@ -29,7 +30,15 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         setVersions(filteredReleases);
         
         if (filteredReleases.length > 0) {
-          setLatestVersion(filteredReleases[0].tag_name);
+          const latestRelease = filteredReleases[0];
+          setLatestVersion(latestRelease.tag_name);
+          
+          const asset = latestRelease.assets.find(asset => 
+            asset.name.toLowerCase().includes(platform.toLowerCase())
+          );
+          if (asset) {
+            setLatestAssetName(asset.name);
+          }
         }
       } catch (err) {
         setError(err.message);
@@ -86,6 +95,12 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
     return count.toString();
   };
 
+  const extractVersionFromFileName = (fileName) => {
+    // Ищем версию в имени файла (например, DiscordBM-Velocity-1.0.jar -> 1.0)
+    const versionMatch = fileName.match(/-(\d+\.\d+(?:\.\d+)?)/);
+    return versionMatch ? versionMatch[1] : null;
+  };
+
   const handleDownload = () => {
     const url = getDownloadUrl(selectedVersion);
     if (url) {
@@ -129,16 +144,17 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
           className={styles.select}
         >
           <option value="latest">
-            🚀 Последняя версия {latestVersion ? `(${latestVersion})` : ''}
+            🚀 Последняя версия {latestVersion ? `(${latestVersion})` : ''} {latestAssetName ? `- v${extractVersionFromFileName(latestAssetName) || 'latest'}` : ''}
           </option>
           {versions.map((release) => {
             const asset = release.assets.find(asset => 
               asset.name.toLowerCase().includes(platform.toLowerCase())
             );
             const downloadCount = asset ? asset.download_count : 0;
+            const fileVersion = extractVersionFromFileName(asset ? asset.name : '');
             return (
               <option key={release.id} value={release.tag_name}>
-                📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} ({formatDownloadCount(downloadCount)})
+                📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} {fileVersion ? `(v${fileVersion})` : ''} ({formatDownloadCount(downloadCount)})
               </option>
             );
           })}
@@ -157,6 +173,11 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         <span className={styles.downloadCount}>
           📊 {formatDownloadCount(getDownloadCount(selectedVersion))} скачиваний
         </span>
+        {selectedVersion === 'latest' && latestAssetName && (
+          <span className={styles.versionInfo}>
+            📦 Версия файла: {extractVersionFromFileName(latestAssetName) || 'latest'}
+          </span>
+        )}
       </div>
       
       <div className={styles.links}>
