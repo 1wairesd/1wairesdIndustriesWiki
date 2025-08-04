@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 
 const DownloadModal = ({ isOpen, onClose }) => {
   const [activePlatform, setActivePlatform] = useState('Velocity');
+  const tabsRef = React.useRef(null);
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -32,6 +33,18 @@ const DownloadModal = ({ isOpen, onClose }) => {
     { id: 'DBMGuiManager', name: '🎛️ DBMGuiManager', description: 'Аддон для GUI менеджера' },
   ];
 
+  const handlePlatformChange = (platformId) => {
+    setActivePlatform(platformId);
+    
+    // Автоматическая прокрутка к активной вкладке
+    setTimeout(() => {
+      const activeTab = tabsRef.current?.querySelector(`[data-platform="${platformId}"]`);
+      if (activeTab) {
+        activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }, 100);
+  };
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -43,12 +56,13 @@ const DownloadModal = ({ isOpen, onClose }) => {
         </div>
         
         <div className={styles.content}>
-          <div className={styles.platformTabs}>
+          <div className={styles.platformTabs} ref={tabsRef}>
             {platforms.map((platform) => (
               <button
                 key={platform.id}
+                data-platform={platform.id}
                 className={`${styles.tab} ${activePlatform === platform.id ? styles.active : ''}`}
-                onClick={() => setActivePlatform(platform.id)}
+                onClick={() => handlePlatformChange(platform.id)}
               >
                 <span className={styles.tabName}>{platform.name}</span>
                 <span className={styles.tabDescription}>{platform.description}</span>
