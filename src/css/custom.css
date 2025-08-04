@@ -27,6 +27,25 @@
   --ifm-color-primary-lighter: #c4b5fd;
   --ifm-color-primary-lightest: #ddd6fe;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  
+  /* Полностью черная тема */
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #0a0a0a;
+  --ifm-color-content: #ffffff;
+  --ifm-color-content-secondary: #a0a0a0;
+  --ifm-color-emphasis-100: #1a1a1a;
+  --ifm-color-emphasis-200: #2a2a2a;
+  --ifm-color-emphasis-300: #3a3a3a;
+  --ifm-color-emphasis-400: #4a4a4a;
+  --ifm-color-emphasis-500: #5a5a5a;
+  --ifm-color-emphasis-600: #6a6a6a;
+  --ifm-color-emphasis-700: #7a7a7a;
+  --ifm-color-emphasis-800: #8a8a8a;
+  --ifm-color-emphasis-900: #9a9a9a;
+  --ifm-card-background-color: #0a0a0a;
+  --ifm-navbar-background-color: #000000;
+  --ifm-footer-background-color: #000000;
+  --ifm-color-emphasis-0: #000000;
 }
 
 [data-theme='dark'] {
@@ -61,8 +80,8 @@
 }
 
 [data-theme='dark'] .prism-code {
-  background-color: #1a1a1a;
-  border: 1px solid #333;
+  background-color: #0a0a0a;
+  border: 1px solid #2a2a2a;
 }
 
 [data-theme='dark'] .prism-code .token.string {
@@ -74,7 +93,7 @@
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu {
-  background-color: #1a1a1a;
+  background-color: #000000;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link {
@@ -154,7 +173,7 @@ body {
 .navbar {
   transition: all 0.3s ease;
   backdrop-filter: blur(0px);
-  background: var(--ifm-navbar-background-color);
+  background: #000000;
 }
 
 .navbar {
@@ -177,22 +196,22 @@ body {
   }
 
   [data-theme='dark'] .navbar.scrolled {
-    background: rgba(26, 26, 46, 0.35);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(139, 92, 246, 0.2);
   }
 }
 
 @media (max-width: 996px) {
   .navbar {
-    background: var(--ifm-navbar-background-color) !important;
+    background: #000000 !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border-bottom: none !important;
   }
   
   .navbar.scrolled {
-    background: var(--ifm-navbar-background-color) !important;
+    background: #000000 !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border-bottom: none !important;
@@ -266,8 +285,8 @@ body {
 }
 
 [data-theme='dark'] .theme-doc-page .navbar.scrolled {
-  background: rgba(26, 26, 46, 0.6);
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
