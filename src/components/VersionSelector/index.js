@@ -258,13 +258,13 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
           className={styles.downloadButton}
           disabled={!getDownloadUrl(selectedVersion)}
         >
-          📥 Скачать
+           Скачать
         </button>
       </div>
       
       <div className={styles.stats}>
         <span className={styles.downloadCount}>
-          📊 {formatDownloadCount(getDownloadCount(selectedVersion))} скачиваний
+           {formatDownloadCount(getDownloadCount(selectedVersion))} скачиваний
         </span>
       </div>
       
@@ -275,7 +275,7 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
           rel="noopener noreferrer"
           className={styles.link}
         >
-          📋 Все версии на GitHub
+          Все версии на GitHub
         </a>
       </div>
     </div>

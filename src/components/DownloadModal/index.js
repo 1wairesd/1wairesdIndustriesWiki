@@ -40,7 +40,7 @@ const DownloadModal = ({ isOpen, onClose }) => {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>📥 Загрузки DiscordBM</h2>
+          <h2>Загрузки плагинов</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ✕
           </button>
@@ -49,7 +49,7 @@ const DownloadModal = ({ isOpen, onClose }) => {
         <div className={styles.content}>
           <div className={styles.platformSelector}>
             <label htmlFor="platform-select" className={styles.platformLabel}>
-              Выберите платформу:
+              Выберите плагин:
             </label>
             <select
               id="platform-select"
@@ -77,7 +77,7 @@ const DownloadModal = ({ isOpen, onClose }) => {
             rel="noopener noreferrer"
             className={styles.githubLink}
           >
-            📋 Все версии на GitHub
+            Все версии на GitHub
           </a>
         </div>
       </div>

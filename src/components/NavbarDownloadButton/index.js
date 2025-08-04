@@ -10,9 +10,9 @@ const NavbarDownloadButton = () => {
       <button 
         className={styles.downloadButton}
         onClick={() => setIsModalOpen(true)}
-        title="Скачать DiscordBM"
+        title="Скачать"
       >
-        📥 Скачать
+        Скачать
       </button>
       
       <DownloadModal 
