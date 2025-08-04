@@ -22,83 +22,232 @@
   height: 100%;
   overflow: hidden;
   z-index: 1;
+  pointer-events: none;
 }
 
+/* Геометрические фигуры */
 .floatingShape {
   position: absolute;
-  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(167, 139, 250, 0.05));
-  border-radius: 50%;
-  animation: float 20s infinite linear;
-  opacity: 0.3;
+  opacity: 0.1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-[data-theme='light'] .floatingShape {
-  background: linear-gradient(45deg, rgba(139, 92, 246, 0.15), rgba(167, 139, 250, 0.1));
-}
-
+/* Круги */
 .floatingShape:nth-child(1) {
-  width: 100px;
-  height: 100px;
-  top: 20%;
+  width: 120px;
+  height: 120px;
+  top: 15%;
   left: 10%;
-  animation-delay: 0s;
-  animation-duration: 25s;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatCircle 25s infinite linear;
 }
 
 .floatingShape:nth-child(2) {
-  width: 150px;
-  height: 150px;
-  top: 60%;
-  right: 15%;
-  animation-delay: -5s;
-  animation-duration: 30s;
-}
-
-.floatingShape:nth-child(3) {
   width: 80px;
   height: 80px;
-  top: 80%;
-  left: 20%;
-  animation-delay: -10s;
-  animation-duration: 20s;
+  top: 70%;
+  right: 20%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatCircle 30s infinite linear reverse;
+}
+
+/* Квадраты */
+.floatingShape:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  top: 25%;
+  right: 15%;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(167, 139, 250, 0.05));
+  transform: rotate(45deg);
+  animation: floatSquare 20s infinite linear;
 }
 
 .floatingShape:nth-child(4) {
-  width: 120px;
-  height: 120px;
-  top: 10%;
-  right: 30%;
-  animation-delay: -15s;
-  animation-duration: 35s;
+  width: 40px;
+  height: 40px;
+  top: 60%;
+  left: 25%;
+  background: linear-gradient(45deg, rgba(167, 139, 250, 0.1), rgba(139, 92, 246, 0.05));
+  transform: rotate(45deg);
+  animation: floatSquare 28s infinite linear reverse;
 }
 
+/* Треугольники */
 .floatingShape:nth-child(5) {
-  width: 90px;
-  height: 90px;
-  top: 40%;
-  left: 60%;
-  animation-delay: -20s;
-  animation-duration: 28s;
+  width: 0;
+  height: 0;
+  top: 45%;
+  left: 70%;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid rgba(139, 92, 246, 0.1);
+  animation: floatTriangle 22s infinite linear;
 }
 
-@keyframes float {
+/* Дополнительные фигуры */
+.floatingShape:nth-child(6) {
+  width: 50px;
+  height: 50px;
+  top: 85%;
+  left: 5%;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.08), rgba(167, 139, 250, 0.04));
+  border-radius: 8px;
+  animation: floatSquare 24s infinite linear;
+}
+
+.floatingShape:nth-child(7) {
+  width: 0;
+  height: 0;
+  top: 10%;
+  left: 80%;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 35px solid rgba(167, 139, 250, 0.08);
+  animation: floatTriangle 26s infinite linear reverse;
+}
+
+.floatingShape:nth-child(8) {
+  width: 70px;
+  height: 70px;
+  top: 35%;
+  left: 50%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatCircle 32s infinite linear;
+}
+
+.floatingShape:nth-child(9) {
+  width: 45px;
+  height: 45px;
+  top: 75%;
+  right: 5%;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.06), rgba(167, 139, 250, 0.03));
+  transform: rotate(45deg);
+  animation: floatSquare 18s infinite linear reverse;
+}
+
+.floatingShape:nth-child(10) {
+  width: 0;
+  height: 0;
+  top: 20%;
+  left: 40%;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 43px solid rgba(139, 92, 246, 0.06);
+  animation: floatTriangle 29s infinite linear;
+}
+
+/* Светлые темы */
+[data-theme='light'] .floatingShape {
+  opacity: 0.15;
+}
+
+[data-theme='light'] .floatingShape:nth-child(1) {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+}
+
+[data-theme='light'] .floatingShape:nth-child(2) {
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.2) 0%, transparent 70%);
+}
+
+[data-theme='light'] .floatingShape:nth-child(3) {
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.15), rgba(167, 139, 250, 0.1));
+}
+
+[data-theme='light'] .floatingShape:nth-child(4) {
+  background: linear-gradient(45deg, rgba(167, 139, 250, 0.15), rgba(139, 92, 246, 0.1));
+}
+
+[data-theme='light'] .floatingShape:nth-child(5) {
+  border-bottom-color: rgba(139, 92, 246, 0.15);
+}
+
+[data-theme='light'] .floatingShape:nth-child(6) {
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.12), rgba(167, 139, 250, 0.08));
+}
+
+[data-theme='light'] .floatingShape:nth-child(7) {
+  border-bottom-color: rgba(167, 139, 250, 0.12);
+}
+
+[data-theme='light'] .floatingShape:nth-child(8) {
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.18) 0%, transparent 70%);
+}
+
+[data-theme='light'] .floatingShape:nth-child(9) {
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(167, 139, 250, 0.06));
+}
+
+[data-theme='light'] .floatingShape:nth-child(10) {
+  border-bottom-color: rgba(139, 92, 246, 0.1);
+}
+
+/* Оптимизация производительности */
+@media (prefers-reduced-motion: reduce) {
+  .floatingShape {
+    animation: none !important;
+    opacity: 0.05 !important;
+  }
+}
+
+/* Анимации */
+@keyframes floatCircle {
   0% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.3;
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.1;
   }
   25% {
-    opacity: 0.6;
+    transform: translateY(-15px) rotate(90deg) scale(1.1);
+    opacity: 0.2;
   }
   50% {
-    transform: translateY(-20px) rotate(180deg);
-    opacity: 0.3;
+    transform: translateY(-30px) rotate(180deg) scale(0.9);
+    opacity: 0.1;
   }
   75% {
-    opacity: 0.6;
+    transform: translateY(-15px) rotate(270deg) scale(1.1);
+    opacity: 0.2;
   }
   100% {
-    transform: translateY(0px) rotate(360deg);
-    opacity: 0.3;
+    transform: translateY(0px) rotate(360deg) scale(1);
+    opacity: 0.1;
+  }
+}
+
+@keyframes floatSquare {
+  0% {
+    transform: translateY(0px) rotate(45deg) scale(1);
+    opacity: 0.1;
+  }
+  33% {
+    transform: translateY(-20px) rotate(135deg) scale(1.2);
+    opacity: 0.2;
+  }
+  66% {
+    transform: translateY(-10px) rotate(225deg) scale(0.8);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(0px) rotate(405deg) scale(1);
+    opacity: 0.1;
+  }
+}
+
+@keyframes floatTriangle {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-25px) rotate(180deg) scale(1.3);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg) scale(1);
+    opacity: 0.1;
   }
 }
 

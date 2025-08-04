@@ -21,14 +21,51 @@ function HomepageHeader() {
       }
     };
 
+    // Интерактивность с мышью для фоновых фигур
+    const handleMouseMove = (e) => {
+      const shapes = document.querySelectorAll('.floatingShape');
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      
+      shapes.forEach((shape, index) => {
+        const rect = shape.getBoundingClientRect();
+        const shapeCenterX = rect.left + rect.width / 2;
+        const shapeCenterY = rect.top + rect.height / 2;
+        
+        const deltaX = (clientX - centerX) * 0.01;
+        const deltaY = (clientY - centerY) * 0.01;
+        
+        const distance = Math.sqrt(
+          Math.pow(clientX - shapeCenterX, 2) + 
+          Math.pow(clientY - shapeCenterY, 2)
+        );
+        
+        if (distance < 200) {
+          const intensity = (200 - distance) / 200;
+          shape.style.transform += ` translate(${deltaX * intensity}px, ${deltaY * intensity}px)`;
+        }
+      });
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       {}
       <div className={styles.animatedBackground}>
+        <div className={styles.floatingShape}></div>
+        <div className={styles.floatingShape}></div>
+        <div className={styles.floatingShape}></div>
+        <div className={styles.floatingShape}></div>
+        <div className={styles.floatingShape}></div>
         <div className={styles.floatingShape}></div>
         <div className={styles.floatingShape}></div>
         <div className={styles.floatingShape}></div>
