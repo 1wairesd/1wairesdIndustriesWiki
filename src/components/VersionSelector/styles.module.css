@@ -1,9 +1,9 @@
 .container {
   margin: 1.5rem 0;
   padding: 1.5rem;
-  background: #202731;
+  background: #1a1a1a;
   border-radius: 12px;
-  border: 1px solid #29333f;
+  border: 1px solid #3a3a3a;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
