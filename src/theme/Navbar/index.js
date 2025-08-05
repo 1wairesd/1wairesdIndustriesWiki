@@ -15,7 +15,7 @@ export default function NavbarWrapper(props) {
           onClick={() => setIsModalOpen(true)}
           type="button"
         >
-          Загрузки
+          Загрузщик
         </button>
         <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>

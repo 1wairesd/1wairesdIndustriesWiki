@@ -187,7 +187,6 @@
   background: #e5e5e5;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .selector {
     flex-direction: column;

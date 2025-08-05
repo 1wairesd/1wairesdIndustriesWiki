@@ -36,7 +36,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
                         const assetName = asset.name.toLowerCase();
                         const platformLower = platform.toLowerCase();
                         
-                        // Специальная обработка для платформ
                         if (platform === 'Velocity') {
                           return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
                         }
@@ -87,7 +86,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
       const assetName = asset.name.toLowerCase();
       const platformLower = platform.toLowerCase();
       
-      // Специальная обработка для платформ
       if (platform === 'Velocity') {
         return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
       }
@@ -115,7 +113,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
       const assetName = asset.name.toLowerCase();
       const platformLower = platform.toLowerCase();
       
-      // Специальная обработка для платформ
       if (platform === 'Velocity') {
         return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
       }
@@ -145,7 +142,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
   };
 
   const extractVersionFromFileName = (fileName) => {
-    // Ищем версию в имени файла (например, DiscordBM-Velocity-1.0.jar -> 1.0)
     const versionMatch = fileName.match(/-(\d+\.\d+(?:\.\d+)?)/);
     return versionMatch ? versionMatch[1] : null;
   };
@@ -227,7 +223,6 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
                           const assetName = asset.name.toLowerCase();
                           const platformLower = platform.toLowerCase();
                           
-                          // Специальная обработка для платформ
                           if (platform === 'Velocity') {
                             return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
                           }
@@ -247,7 +242,7 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
                         const fileVersion = extractVersionFromFileName(asset ? asset.name : '');
                         return (
                           <option key={release.id} value={release.tag_name}>
-                            📦 {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} {fileVersion ? `(v${fileVersion})` : ''} ({formatDownloadCount(downloadCount)})
+                            {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} {fileVersion ? `(v${fileVersion})` : ''} ({formatDownloadCount(downloadCount)})
                           </option>
                         );
                       })}
