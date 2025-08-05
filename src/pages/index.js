@@ -21,7 +21,6 @@ function HomepageHeader() {
       }
     };
 
-    // Интерактивность с мышью для фоновых фигур
     const handleMouseMove = (e) => {
       const shapes = document.querySelectorAll('.floatingShape');
       const { clientX, clientY } = e;
@@ -86,10 +85,10 @@ function HomepageHeader() {
           </div>
           <div className={styles.buttons}>
             <Link className={styles.primaryButton} to="/docs/1wairesd-info-main">
-              📚 Документация
+              Документация
             </Link>
             <Link className={styles.secondaryButton} to="https://github.com/1wairesd">
-              🐙 GitHub
+              GitHub
             </Link>
           </div>
         </div>
@@ -112,7 +111,7 @@ function ProjectSection() {
                 Узнать больше →
               </Link>
               <Link to="https://github.com/1wairesd/DiscordBM" className={styles.githubLink}>
-                🐙 GitHub
+                GitHub
               </Link>
             </div>
           </div>
