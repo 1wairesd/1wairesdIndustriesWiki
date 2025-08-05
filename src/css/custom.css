@@ -63,6 +63,28 @@
   --ifm-alert-background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Стили футера для темной темы */
+[data-theme='dark'] footer {
+  background-color: #2e2e2e;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] footer .footer__links {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] footer .footer__link-item {
+  color: #ffffff;
+}
+
+[data-theme='dark'] footer .footer__link-item:hover {
+  color: #e5e5e5;
+}
+
+[data-theme='dark'] footer .footer__copyright {
+  color: #b0b0b0;
+}
+
 [data-theme='dark'] .button {
   background-color: #ffffff;
   border-color: #e5e5e5;

@@ -76,7 +76,7 @@ function HomepageHeader() {
       <div className="container">
         <div className={styles.heroContent}>
           <Heading as="h1" className={styles.heroTitle}>
-            👋 Привет, я Георгий
+            Привет, я Георгий
           </Heading>
           <p className={styles.heroSubtitle}>
             Разработчик плагинов и интеграций для Minecraft
