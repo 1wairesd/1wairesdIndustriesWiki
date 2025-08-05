@@ -296,7 +296,7 @@
 
 .primaryButton {
   background: linear-gradient(135deg, #ffffff, #e5e5e5);
-  color: white;
+  color: #000000;
   padding: 1rem 2rem;
   border-radius: 50px;
   text-decoration: none;
@@ -309,7 +309,7 @@
 .primaryButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
-  color: white;
+  color: #000000;
   text-decoration: none;
 }
 
