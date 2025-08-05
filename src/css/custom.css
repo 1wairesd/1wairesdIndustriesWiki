@@ -69,6 +69,63 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Кастомный скроллбар для темной темы */
+[data-theme='dark'] ::-webkit-scrollbar {
+  width: 12px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+  background-clip: content-box;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox скроллбар */
+[data-theme='dark'] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+/* Плавная прокрутка для всего сайта */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Анимация скроллбара при прокрутке */
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.3s ease;
+  animation: scrollbarPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollbarPulse {
+  0%, 100% {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
 [data-theme='dark'] footer .footer__links {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
