@@ -42,7 +42,7 @@ Discord:
 ```yaml
 netty:
   ip: "127.0.0.1"
-  port: 23234
+  port: "23234"
 ```
 > ⚠️ **Безопасность:** Не разглашайте данные подключения, это важно для безопасности.
 
@@ -55,43 +55,6 @@ netty:
 **Пример:**
 ```yaml
 forwarding-secret-file: "secret.complete.code"
-```
-
----
-
-## view_connected_banned_ip
-
-**Описание:** Показывать ли IP-адреса забаненных пользователей среди подключаемых клиентов.
-- **Тип:** `true` или `false`
-
-**Пример:**
-```yaml
-view_connected_banned_ip: false
-```
-
----
-
-## commands.default-ephemeral
-
-**Описание:** Делать ли ответы на команды по умолчанию эфемерными (видимыми только отправителю).
-- **Тип:** `true` или `false`
-
-**Пример:**
-```yaml
-commands:
-  default-ephemeral: false
-```
-
----
-
-## buttons.timeout-ms
-
-**Описание:** Время ожидания (таймаут) жизни для кнопок в миллисекундах (например, 900000 мс = 15 минут).
-
-**Пример:**
-```yaml
-buttons:
-  timeout-ms: 900000
 ```
 
 ---
@@ -180,14 +143,6 @@ netty:
   port: 23234 
 
 forwarding-secret-file: "secret.complete.code"
-
-view_connected_banned_ip: false
-
-commands:
-  default-ephemeral: false
-
-buttons:
-  timeout-ms: 900000
 
 debug:
   debug-connections: true            # Логировать подключения и отключения клиентов
