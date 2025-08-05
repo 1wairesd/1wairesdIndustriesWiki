@@ -25,7 +25,7 @@ Discord:
   Bot-token: <ваш токен>
   activity:
     type: "playing"
-    message: "BatMine"
+    message: "DiscordBM"
 ```
 
 > ⚠️ **Безопасность:** Никогда не публикуйте свой реальный токен в открытом доступе!
