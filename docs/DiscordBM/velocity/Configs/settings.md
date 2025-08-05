@@ -22,7 +22,7 @@ title: settings.yml
 **Пример:**
 ```yaml
 Discord:
-  Bot-token: <ваш токен>
+  Bot-token: "your-bot-token"
   activity:
     type: "playing"
     message: "DiscordBM"
