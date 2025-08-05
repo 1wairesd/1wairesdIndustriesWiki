@@ -1,3 +1,12 @@
+.downloadButtonContainer {
+  position: fixed;
+  top: 0.5rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
 .downloadButton {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
@@ -23,6 +32,11 @@
 }
 
 @media (max-width: 768px) {
+  .downloadButtonContainer {
+    top: 0.3rem;
+    right: 0.5rem;
+  }
+  
   .downloadButton {
     padding: 6px 12px;
     font-size: 13px;
