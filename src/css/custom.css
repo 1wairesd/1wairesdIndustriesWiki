@@ -29,23 +29,23 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   
   /* Grok AI - темная схема */
-  --ifm-background-color: #2e2e2e;
-  --ifm-background-surface-color: #3a3a3a;
+  --ifm-background-color: #1a1a1a;
+  --ifm-background-surface-color: #2a2a2a;
   --ifm-color-content: #ffffff;
   --ifm-color-content-secondary: #b0b0b0;
-  --ifm-color-emphasis-100: #3a3a3a;
-  --ifm-color-emphasis-200: #4a4a4a;
-  --ifm-color-emphasis-300: #5a5a5a;
-  --ifm-color-emphasis-400: #6a6a6a;
-  --ifm-color-emphasis-500: #7a7a7a;
-  --ifm-color-emphasis-600: #8a8a8a;
-  --ifm-color-emphasis-700: #9a9a9a;
-  --ifm-color-emphasis-800: #aaaaaa;
-  --ifm-color-emphasis-900: #bababa;
-  --ifm-card-background-color: #3a3a3a;
-  --ifm-navbar-background-color: #2e2e2e;
-  --ifm-footer-background-color: #2e2e2e;
-  --ifm-color-emphasis-0: #2e2e2e;
+  --ifm-color-emphasis-100: #2a2a2a;
+  --ifm-color-emphasis-200: #3a3a3a;
+  --ifm-color-emphasis-300: #4a4a4a;
+  --ifm-color-emphasis-400: #5a5a5a;
+  --ifm-color-emphasis-500: #6a6a6a;
+  --ifm-color-emphasis-600: #7a7a7a;
+  --ifm-color-emphasis-700: #8a8a8a;
+  --ifm-color-emphasis-800: #9a9a9a;
+  --ifm-color-emphasis-900: #aaaaaa;
+  --ifm-card-background-color: #2a2a2a;
+  --ifm-navbar-background-color: #1a1a1a;
+  --ifm-footer-background-color: #1a1a1a;
+  --ifm-color-emphasis-0: #1a1a1a;
 }
 
 [data-theme='dark'] {
@@ -65,7 +65,7 @@
 
 /* Стили футера для темной темы */
 [data-theme='dark'] footer {
-  background-color: #2e2e2e;
+  background-color: #1a1a1a;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -102,8 +102,8 @@
 }
 
 [data-theme='dark'] .prism-code {
-  background-color: #3a3a3a;
-  border: 1px solid #5a5a5a;
+  background-color: #2a2a2a;
+  border: 1px solid #4a4a4a;
 }
 
 [data-theme='dark'] .prism-code .token.string {
@@ -115,7 +115,7 @@
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu {
-  background-color: #2e2e2e;
+  background-color: #1a1a1a;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__link {
@@ -218,22 +218,22 @@ body {
   }
 
   [data-theme='dark'] .navbar.scrolled {
-    background: rgba(46, 46, 46, 0.9);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(26, 26, 26, 0.9);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 
 @media (max-width: 996px) {
   .navbar {
-    background: #2e2e2e !important;
+    background: #1a1a1a !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border-bottom: none !important;
   }
   
   .navbar.scrolled {
-    background: #2e2e2e !important;
+    background: #1a1a1a !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border-bottom: none !important;
@@ -307,8 +307,8 @@ body {
 }
 
 [data-theme='dark'] .theme-doc-page .navbar.scrolled {
-  background: rgba(46, 46, 46, 0.9);
-  box-shadow: 0 1px 10px rgba(39, 39, 39, 0.2);
+  background: rgba(26, 26, 26, 0.9);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
