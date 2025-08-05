@@ -11,8 +11,8 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
 
   const getPlatformDisplayName = (platform) => {
     const platformNames = {
-      'Velocity': 'Velocity',
-      'Bukkit': 'Bukkit',
+      'Velocity': 'DiscordBM-Velocity',
+      'Bukkit': 'DiscordBM-Bukkit',
       'DBMDonateCase': 'DBMDonateCase',
       'DBMGuiManager': 'DBMGuiManager'
     };
@@ -31,31 +31,30 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         
         const releases = await response.json();
         
-                            const filteredReleases = releases.filter(release => 
-                      release.assets.some(asset => {
-                        const assetName = asset.name.toLowerCase();
-                        const platformLower = platform.toLowerCase();
-                        
-                        if (platform === 'Velocity') {
-                          return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
-                        }
-                        if (platform === 'Bukkit') {
-                          return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
-                        }
-                        if (platform === 'DBMDonateCase') {
-                          return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
-                        }
-                        if (platform === 'DBMGuiManager') {
-                          return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
-                        }
-                        
-                        return assetName.includes(platformLower);
-                      })
-                    );
+        const filteredReleases = releases.filter(release => 
+          release.assets.some(asset => {
+            const assetName = asset.name.toLowerCase();
+            const platformLower = platform.toLowerCase();
+            
+            if (platform === 'Velocity') {
+              return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
+            }
+            if (platform === 'Bukkit') {
+              return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
+            }
+            if (platform === 'DBMDonateCase') {
+              return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
+            }
+            if (platform === 'DBMGuiManager') {
+              return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
+            }
+            
+            return assetName.includes(platformLower);
+          })
+        );
         
         setVersions(filteredReleases);
         
-
         if (filteredReleases.length > 0) {
           setSelectedVersion(filteredReleases[0].tag_name);
           const latestRelease = filteredReleases[0];
@@ -130,6 +129,33 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
     });
     
     return asset ? asset.download_count : 0;
+  };
+
+  const getAssetInfo = (version) => {
+    const release = versions.find(v => v.tag_name === version);
+    if (!release) return null;
+    
+    const asset = release.assets.find(asset => {
+      const assetName = asset.name.toLowerCase();
+      const platformLower = platform.toLowerCase();
+      
+      if (platform === 'Velocity') {
+        return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
+      }
+      if (platform === 'Bukkit') {
+        return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
+      }
+      if (platform === 'DBMDonateCase') {
+        return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
+      }
+      if (platform === 'DBMGuiManager') {
+        return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
+      }
+      
+      return assetName.includes(platformLower);
+    });
+    
+    return asset;
   };
 
   const formatDownloadCount = (count) => {
@@ -207,45 +233,32 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
     );
   }
 
+  const selectedRelease = versions.find(v => v.tag_name === selectedVersion);
+  const selectedAsset = getAssetInfo(selectedVersion);
+
   return (
     <div className={styles.container}>
       <div className={styles.platformHeader}>
         <h3>{getPlatformDisplayName(platform)}</h3>
       </div>
+      
       <div className={styles.selector}>
         <select 
           value={selectedVersion} 
           onChange={(e) => setSelectedVersion(e.target.value)}
           className={styles.select}
         >
-                                {versions.map((release) => {
-                        const asset = release.assets.find(asset => {
-                          const assetName = asset.name.toLowerCase();
-                          const platformLower = platform.toLowerCase();
-                          
-                          if (platform === 'Velocity') {
-                            return assetName.includes('discordbm-velocity') || assetName.includes('velocity');
-                          }
-                          if (platform === 'Bukkit') {
-                            return assetName.includes('discordbm-bukkit') || assetName.includes('bukkit');
-                          }
-                          if (platform === 'DBMDonateCase') {
-                            return assetName.includes('dbmdonatecase') || assetName.includes('donatecase');
-                          }
-                          if (platform === 'DBMGuiManager') {
-                            return assetName.includes('dbmguimanager') || assetName.includes('guimanager');
-                          }
-                          
-                          return assetName.includes(platformLower);
-                        });
-                        const downloadCount = asset ? asset.download_count : 0;
-                        const fileVersion = extractVersionFromFileName(asset ? asset.name : '');
-                        return (
-                          <option key={release.id} value={release.tag_name}>
-                            {release.tag_name} - {new Date(release.published_at).toLocaleDateString('ru-RU')} {fileVersion ? `(v${fileVersion})` : ''} ({formatDownloadCount(downloadCount)})
-                          </option>
-                        );
-                      })}
+          {versions.map((release) => {
+            const asset = getAssetInfo(release.tag_name);
+            const fileVersion = extractVersionFromFileName(asset ? asset.name : '');
+            const displayName = fileVersion ? `${getPlatformDisplayName(platform)}-v${fileVersion}` : `${getPlatformDisplayName(platform)}-${release.tag_name}`;
+            
+            return (
+              <option key={release.id} value={release.tag_name}>
+                {displayName}
+              </option>
+            );
+          })}
         </select>
         
         <button 
@@ -257,11 +270,32 @@ const VersionSelector = ({ repoOwner = '1wairesd', repoName = 'DiscordBM', platf
         </button>
       </div>
       
-      <div className={styles.stats}>
-        <span className={styles.downloadCount}>
-           {formatDownloadCount(getDownloadCount(selectedVersion))} скачиваний
-        </span>
-      </div>
+      {selectedRelease && selectedAsset && (
+        <div className={styles.versionDetails}>
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Название файла:</span>
+            <span className={styles.detailValue}>{selectedAsset.name}</span>
+          </div>
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Дата релиза:</span>
+            <span className={styles.detailValue}>
+              {new Date(selectedRelease.published_at).toLocaleDateString('ru-RU')}
+            </span>
+          </div>
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Скачиваний:</span>
+            <span className={styles.detailValue}>
+              {formatDownloadCount(selectedAsset.download_count)}
+            </span>
+          </div>
+          {selectedRelease.body && (
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Описание:</span>
+              <span className={styles.detailValue}>{selectedRelease.body}</span>
+            </div>
+          )}
+        </div>
+      )}
       
       <div className={styles.links}>
         <a 

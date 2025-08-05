@@ -4,7 +4,7 @@
   background: #2e2e2e;
   border-radius: 12px;
   border: 1px solid #3a3a3a;
-  box-shadow: 0 2px 8px rgba(46, 46, 46, 0.2).2);
+  box-shadow: 0 2px 8px rgba(46, 46, 46, 0.2);
 }
 
 .platformHeader {
@@ -77,6 +77,47 @@
 .downloadButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.versionDetails {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detailRow:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.detailLabel {
+  color: var(--ifm-color-content-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.detailValue {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-align: right;
+  word-break: break-word;
+  flex: 1;
+  margin-left: 1rem;
 }
 
 .links {
@@ -200,5 +241,16 @@
   .downloadButton {
     width: 100%;
     justify-content: center;
+  }
+  
+  .detailRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .detailValue {
+    text-align: left;
+    margin-left: 0;
+    margin-top: 0.25rem;
   }
 } 
