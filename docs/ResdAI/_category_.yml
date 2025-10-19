@@ -1,0 +1,8 @@
+label: "ResdAI"
+collapsible: true
+collapsed: true
+link:
+  type: doc
+  id: "resdai-main"
+customProps:
+  icon: "FaGift"
