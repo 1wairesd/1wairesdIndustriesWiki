@@ -1,0 +1,5 @@
+label: "CommandGuard"
+collapsible: true
+collapsed: false
+customProps:
+  icon: "FaShield"

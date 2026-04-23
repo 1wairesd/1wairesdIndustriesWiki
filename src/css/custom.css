@@ -1,42 +1,253 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ============================================================
+   CommandGuard / 1wairesdIndustries — Custom Theme
+   Inspired by GitBook, Linear, Vercel docs
+   ============================================================ */
 
-/* You can override the default Infima variables here. */
+/* ── Colour tokens ─────────────────────────────────────────── */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-color-primary:          #5b6af0;
+  --ifm-color-primary-dark:     #4a59e8;
+  --ifm-color-primary-darker:   #3f4ee3;
+  --ifm-color-primary-darkest:  #2c3bcc;
+  --ifm-color-primary-light:    #6c7bf2;
+  --ifm-color-primary-lighter:  #7786f4;
+  --ifm-color-primary-lightest: #99a5f8;
+
+  --ifm-background-color:       #ffffff;
+  --ifm-background-surface-color: #f8f9fc;
+  --ifm-font-color-base:        #1a1d2e;
+  --ifm-font-color-secondary:   #5c6070;
+
+  --ifm-navbar-background-color: rgba(255,255,255,0.85);
+  --ifm-navbar-shadow:          0 1px 0 0 rgba(0,0,0,0.08);
+
+  --ifm-code-font-size:         90%;
+  --ifm-code-background:        #f0f2ff;
+  --ifm-code-border-radius:     6px;
+
+  --ifm-border-radius:          10px;
+  --ifm-global-border-width:    1px;
+  --ifm-hr-border-color:        #e8eaf0;
+
+  --docusaurus-highlighted-code-line-bg: rgba(91,106,240,0.08);
+
+  /* Sidebar */
+  --ifm-sidebar-width:          272px;
+  --ifm-menu-color:             #5c6070;
+  --ifm-menu-color-active:      #5b6af0;
+  --ifm-menu-link-padding-vertical: 6px;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary:          #818cf8;
+  --ifm-color-primary-dark:     #6c78f6;
+  --ifm-color-primary-darker:   #6270f5;
+  --ifm-color-primary-darkest:  #4452f2;
+  --ifm-color-primary-light:    #96a0fa;
+  --ifm-color-primary-lighter:  #a5aefb;
+  --ifm-color-primary-lightest: #c4cafd;
+
+  --ifm-background-color:       #0f1117;
+  --ifm-background-surface-color: #161b27;
+  --ifm-font-color-base:        #e8eaf0;
+  --ifm-font-color-secondary:   #8b90a0;
+
+  --ifm-navbar-background-color: rgba(15,17,23,0.9);
+  --ifm-navbar-shadow:          0 1px 0 0 rgba(255,255,255,0.06);
+
+  --ifm-code-background:        #1e2235;
+  --ifm-hr-border-color:        #252a3a;
+
+  --docusaurus-highlighted-code-line-bg: rgba(129,140,248,0.12);
+
+  --ifm-menu-color:             #8b90a0;
+  --ifm-menu-color-active:      #818cf8;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* ── Typography ────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.4rem; margin-top: 2.5rem; }
+h3 { font-size: 1.15rem; margin-top: 2rem; }
+
+/* ── Navbar ────────────────────────────────────────────────── */
+.navbar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ifm-hr-border-color);
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────── */
+.menu {
+  padding: 0.75rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.menu__link {
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menu__link:hover {
+  background: var(--ifm-code-background);
+  color: var(--ifm-color-primary);
+}
+
+.menu__link--active {
+  background: var(--ifm-code-background) !important;
+  color: var(--ifm-color-primary) !important;
+  font-weight: 600;
+}
+
+.menu__caret::before {
+  border-color: var(--ifm-font-color-secondary);
+}
+
+/* ── Content area ──────────────────────────────────────────── */
+.markdown {
+  line-height: 1.75;
+}
+
+.markdown > p {
+  color: var(--ifm-font-color-secondary);
+}
+
+/* ── Code blocks ───────────────────────────────────────────── */
+code {
+  background: var(--ifm-code-background);
+  border: 1px solid var(--ifm-hr-border-color);
+  border-radius: var(--ifm-code-border-radius);
+  padding: 0.15em 0.45em;
+  font-size: var(--ifm-code-font-size);
+}
+
+.prism-code {
+  border-radius: 10px !important;
+  border: 1px solid var(--ifm-hr-border-color) !important;
+  font-size: 0.875rem !important;
+}
+
+div[class*='codeBlockContainer'] {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+[data-theme='dark'] div[class*='codeBlockContainer'] {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+/* ── Tables ────────────────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-hr-border-color);
+}
+
+thead tr {
+  background: var(--ifm-background-surface-color);
+}
+
+th {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-font-color-secondary);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--ifm-hr-border-color);
+}
+
+td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--ifm-hr-border-color);
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--ifm-background-surface-color);
+}
+
+/* ── Admonitions (tip, info, warning, danger) ──────────────── */
+.alert {
+  border-radius: 8px;
+  border-left-width: 3px;
+  font-size: 0.9rem;
+}
+
+.alert--info    { border-left-color: #5b6af0; background: rgba(91,106,240,0.06); }
+.alert--tip     { border-left-color: #10b981; background: rgba(16,185,129,0.06); }
+.alert--warning { border-left-color: #f59e0b; background: rgba(245,158,11,0.06); }
+.alert--danger  { border-left-color: #ef4444; background: rgba(239,68,68,0.06); }
+
+[data-theme='dark'] .alert--info    { background: rgba(129,140,248,0.08); }
+[data-theme='dark'] .alert--tip     { background: rgba(16,185,129,0.08); }
+[data-theme='dark'] .alert--warning { background: rgba(245,158,11,0.08); }
+[data-theme='dark'] .alert--danger  { background: rgba(239,68,68,0.08); }
+
+/* ── Pagination ────────────────────────────────────────────── */
+.pagination-nav__link {
+  border-radius: 8px;
+  border: 1px solid var(--ifm-hr-border-color);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(91,106,240,0.12);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--ifm-hr-border-color);
+  background: var(--ifm-background-surface-color);
+  font-size: 0.875rem;
+}
+
+/* ── Breadcrumbs ───────────────────────────────────────────── */
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* ── Scrollbar (webkit) ────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ifm-hr-border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ifm-color-primary); }
+
+/* ── Mermaid diagrams ──────────────────────────────────────── */
+.docusaurus-mermaid-container {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-hr-border-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
 }
