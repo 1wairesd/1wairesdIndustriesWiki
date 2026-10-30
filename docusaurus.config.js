@@ -60,6 +60,7 @@ const config = {
         src: "img/1wairesdindustries.png",
       },
       items: [
+        { type: "localeDropdown", position: "left" },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
@@ -71,7 +72,6 @@ const config = {
           label: "GitHub",
           position: "right",
         },
-        { type: "localeDropdown", position: "right" },
       ],
     },
     docs: {

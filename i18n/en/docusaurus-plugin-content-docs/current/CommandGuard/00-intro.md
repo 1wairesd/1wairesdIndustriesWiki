@@ -66,3 +66,4 @@ each other. See [Cross-Server Setup](./04-network.md) for details.
 - [Commands](./05-commands.md) — command list.
 - [Permissions](./06-permissions.md) — permission list.
 - [Localization](./07-localization.md) — lang files and the prefix.
+- [Developer API](./08-api.md) — events and tab-group access from another plugin.

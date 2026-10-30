@@ -1,0 +1,127 @@
+---
+id: commandguard-api
+title: API для разработчиков
+sidebar_position: 9
+---
+
+# API для разработчиков
+
+У CommandGuard **единый API-модуль для обеих платформ**. Доступ к tab-группам и
+проверка команд — одинаковый код и для Spigot, и для Velocity. Отличается только
+**событие блокировки команды** — оно своё на каждой платформе.
+
+## Один артефакт на обе платформы
+
+Точка входа — интерфейс `CGAPI`, который вы получаете через `CGAPIProvider.get()`.
+Он одинаков и на Spigot, и на Velocity:
+
+```java
+CGAPI api = CGAPIProvider.get();
+
+api.getCommandManager();   // проверка блокировки команд
+api.getTabGroupManager();  // работа с tab-группами
+api.getPlatform();         // платформа (Bukkit / Velocity), версия, logger
+```
+
+:::warning
+`CGAPIProvider.get()` бросает `IllegalStateException`, если CommandGuard ещё не
+включён. Убедитесь, что ваш плагин зависит от CommandGuard и обращается к API уже
+после его запуска.
+:::
+
+## Подключение
+
+Артефакт публикуется на [JitPack](https://jitpack.io/#1wairesd/CommandGuard).
+Подключается **одинаково для Spigot и Velocity** — это тот же `api`. Замените
+`VERSION` на тег релиза или `main-SNAPSHOT` для последнего коммита.
+
+### Gradle
+
+```groovy
+repositories {
+    maven { url = "https://jitpack.io" }
+}
+
+dependencies {
+    compileOnly 'com.github.1wairesd:CommandGuard:VERSION:api'
+}
+```
+
+### Maven
+
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+    <groupId>com.github.1wairesd</groupId>
+    <artifactId>CommandGuard</artifactId>
+    <version>VERSION</version>
+    <classifier>api</classifier>
+    <scope>provided</scope>
+</dependency>
+```
+
+## Что общее для обеих платформ
+
+### Проверка команды
+
+```java
+CommandManager cm = CGAPIProvider.get().getCommandManager();
+// логика блокировки по конфигу — одинакова на Spigot и Velocity
+```
+
+### Работа с tab-группами
+
+```java
+TabGroupManager tgm = CGAPIProvider.get().getTabGroupManager();
+
+// Разрешённые команды для набора прав игрока
+// serverName = null, если фильтр по серверу не нужен
+List<String> allowed = tgm.getTabCommands(permissions, serverName);
+
+// Активные группы игрока (минимум ["default"])
+List<String> groups = tgm.getActiveGroupNames(permissions, serverName);
+```
+
+## Что отличается: событие блокировки
+
+Событие блокировки команды наследует разные базовые типы платформы, поэтому класс
+свой на каждой:
+
+### Spigot — `BukkitCommandBlockedEvent`
+
+Обычное Bukkit-событие, реализующее `Cancellable`.
+
+```java
+@EventHandler
+public void onCommandBlocked(BukkitCommandBlockedEvent event) {
+    event.getPlayer().sendMessage("Заблокировано: " + event.getFullCommand());
+    event.setCancelled(true); // пропустить команду несмотря на блокировку
+}
+```
+
+### Velocity — `VelocityCommandBlockedEvent`
+
+Реализует `ResultedEvent<GenericResult>`.
+
+```java
+@Subscribe
+public void onCommandBlocked(VelocityCommandBlockedEvent event) {
+    event.getPlayer().sendMessage(Component.text("Заблокировано: " + event.getFullCommand()));
+    event.setResult(ResultedEvent.GenericResult.denied()); // разрешить команду
+}
+```
+
+Оба события дают `getPlayer()` и `getFullCommand()`. Никакой бизнес-логики в
+событии нет — только данные и результат.
+
+## Итог
+
+| Часть API | Spigot | Velocity |
+|-----------|--------|----------|
+| `CGAPIProvider.get()` / `CGAPI` | общий | общий |
+| `CommandManager`, `TabGroupManager`, `Platform` | общий | общий |
+| Событие блокировки | `BukkitCommandBlockedEvent` | `VelocityCommandBlockedEvent` |
