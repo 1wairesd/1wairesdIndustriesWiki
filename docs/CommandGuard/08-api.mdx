@@ -4,6 +4,10 @@ title: API для розробників
 sidebar_position: 9
 ---
 
+import FetchVersion from '@site/src/components/FetchVersion';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # API для розробників
 
 CommandGuard має **єдиний API-модуль для обох платформ**. Доступ до tab-груп і
@@ -32,37 +36,35 @@ API вже після його запуску.
 ## Підключення
 
 Артефакт публікується на [JitPack](https://jitpack.io/#1wairesd/CommandGuard).
-Підключається **однаково для Spigot і Velocity** — це той самий `api`. Замініть
-`VERSION` на тег релізу або `main-SNAPSHOT` для останнього коміту.
+Підключається **однаково для Spigot і Velocity** — це той самий `api`. Версія нижче
+підтягується автоматично — остання збірка з JitPack.
 
-### Gradle
+### Репозиторій
 
-```groovy
-repositories {
-    maven { url = "https://jitpack.io" }
-}
-
-dependencies {
-    compileOnly 'com.github.1wairesd:CommandGuard:VERSION:api'
-}
+```groovy title="Gradle"
+maven { url = "https://jitpack.io" }
 ```
 
-### Maven
-
-```xml
+```xml title="Maven"
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
 </repository>
-
-<dependency>
-    <groupId>com.github.1wairesd</groupId>
-    <artifactId>CommandGuard</artifactId>
-    <version>VERSION</version>
-    <classifier>api</classifier>
-    <scope>provided</scope>
-</dependency>
 ```
+
+### Залежність
+
+<Tabs groupId="build-tool">
+  <TabItem value="gradle-kts" label="Gradle (Kotlin)" default>
+    <FetchVersion type="gradle-kts" classifier="api" />
+  </TabItem>
+  <TabItem value="gradle-groovy" label="Gradle (Groovy)">
+    <FetchVersion type="gradle-groovy" classifier="api" />
+  </TabItem>
+  <TabItem value="maven" label="Maven">
+    <FetchVersion type="maven" classifier="api" />
+  </TabItem>
+</Tabs>
 
 ## Що спільне для обох платформ
 

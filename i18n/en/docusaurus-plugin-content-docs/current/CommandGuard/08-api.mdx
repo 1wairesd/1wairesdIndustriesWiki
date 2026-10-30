@@ -4,6 +4,10 @@ title: Developer API
 sidebar_position: 9
 ---
 
+import FetchVersion from '@site/src/components/FetchVersion';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Developer API
 
 CommandGuard has a **single API module for both platforms**. Accessing tab groups
@@ -32,37 +36,35 @@ it has started.
 ## Adding the dependency
 
 The artifact is published on [JitPack](https://jitpack.io/#1wairesd/CommandGuard).
-It's added **the same way for Spigot and Velocity** — it's the same `api`. Replace
-`VERSION` with a release tag, or `main-SNAPSHOT` for the latest commit.
+It's added **the same way for Spigot and Velocity** — it's the same `api`. The
+version below is fetched automatically — the latest JitPack build.
 
-### Gradle
+### Repository
 
-```groovy
-repositories {
-    maven { url = "https://jitpack.io" }
-}
-
-dependencies {
-    compileOnly 'com.github.1wairesd:CommandGuard:VERSION:api'
-}
+```groovy title="Gradle"
+maven { url = "https://jitpack.io" }
 ```
 
-### Maven
-
-```xml
+```xml title="Maven"
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
 </repository>
-
-<dependency>
-    <groupId>com.github.1wairesd</groupId>
-    <artifactId>CommandGuard</artifactId>
-    <version>VERSION</version>
-    <classifier>api</classifier>
-    <scope>provided</scope>
-</dependency>
 ```
+
+### Dependency
+
+<Tabs groupId="build-tool">
+  <TabItem value="gradle-kts" label="Gradle (Kotlin)" default>
+    <FetchVersion type="gradle-kts" classifier="api" />
+  </TabItem>
+  <TabItem value="gradle-groovy" label="Gradle (Groovy)">
+    <FetchVersion type="gradle-groovy" classifier="api" />
+  </TabItem>
+  <TabItem value="maven" label="Maven">
+    <FetchVersion type="maven" classifier="api" />
+  </TabItem>
+</Tabs>
 
 ## Shared between both platforms
 
