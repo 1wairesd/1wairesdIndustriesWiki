@@ -1,32 +1,32 @@
 ---
 id: commandguard-commands
-title: Commands
+title: Команди
 sidebar_position: 6
 ---
 
-# Commands
+# Команди
 
-## Backend (Paper/Spigot) — `/cg`
+Усі команди потребують права `commandguard.admin`.
 
-| Command | Description | Permission |
-|---------|-------------|------------|
-| `/cg reload` | Reload config, refresh tab for all players | `commandguard.admin` |
-| `/cg check <player>` | Show active group and allowed commands for a player | `commandguard.admin` |
-| `/cg updategroup <player>` | Refresh tab-complete for a specific player | `commandguard.admin` |
+## Spigot
 
-## Proxy (Velocity/Waterfall) — `/cgv`
+| Команда | Опис |
+|---------|------|
+| `/cg reload` | Перезавантажити конфіг і оновити tab усім гравцям |
+| `/cg check <гравець>` | Показати активну tab-групу та дозволені команди гравця |
+| `/cg updategroup <гравець>` | Надіслати гравцю оновлений список tab |
 
-| Command | Description | Permission |
-|---------|-------------|------------|
-| `/cgv reload` | Reload config, push TabSync to all online players | `commandguard.admin` |
-| `/cgv check <player>` | Show active group, server, and allowed commands | `commandguard.admin` |
-| `/cgv updategroup <player>` | Push updated TabSync to a specific player | `commandguard.admin` |
+Аліас команди: `/cg` (повна назва — `/commandguard`).
 
-## Example Output of `/cgv check`
+## Velocity
 
-```
-[CommandGuard] Player: Steve
-               Server: lobby
-               Active group(s): vip
-               Allowed commands (5): /hub, /server, /skin, /home, /spawn
-```
+| Команда | Опис |
+|---------|------|
+| `/cgv reload` | Перезавантажити конфіг і надіслати TabSync усім онлайн-гравцям |
+| `/cgv check <гравець>` | Показати активну tab-групу та дозволені команди гравця |
+| `/cgv updategroup <гравець>` | Надіслати гравцю TabSync |
+
+:::tip
+`/cg check` зручний для діагностики: показує, яку групу й скільки команд зараз
+бачить конкретний гравець.
+:::

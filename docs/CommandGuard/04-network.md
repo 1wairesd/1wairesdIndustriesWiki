@@ -1,30 +1,44 @@
 ---
 id: commandguard-network
-title: Cross-Server Setup
+title: Робота в мережі
 sidebar_position: 5
 ---
 
-# Cross-Server Setup
+# Робота в мережі
 
-When CommandGuard is installed on both the proxy and backend servers, the proxy pushes its allowed command list to each backend via plugin messaging (**TabSync**). This ensures players see a unified tab-complete list that includes both proxy commands and backend commands.
+Коли CommandGuard стоїть і на проксі Velocity, і на бекенд-серверах Spigot/Paper,
+дві версії працюють над **різними наборами команд** і доповнюють одна одну.
+Проксі надсилає бекенду свій дозволений список команд через plugin messaging
+(**TabSync**), щоб гравець бачив спільний tab-complete: і команди бекенда, і
+команди проксі.
 
-## How TabSync Works
+## Хто за що відповідає
+
+- **Проксі (Velocity)** керує лише **своїми** командами (зареєстрованими на самому
+  Velocity: `/hub`, `/server`, `/skin`...).
+- **Бекенд (Spigot)** керує своїми командами (`/home`, `/spawn`...).
+- **TabSync** додає проксі-команди поверх команд бекенда в автодоповненні гравця.
+
+Напрямок синхронізації — завжди **проксі → бекенд**. Бекенд нічого не надсилає на
+проксі.
+
+## Як працює TabSync
 
 ```mermaid
 sequenceDiagram
-    participant P as Proxy (Velocity)
-    participant B as Backend (Paper)
-    participant C as Client
+    participant C as Клієнт
+    participant P as Проксі (Velocity)
+    participant B as Бекенд (Paper)
 
-    C->>P: Player connects to lobby
-    P->>B: TabSync message (allowed proxy commands)
-    B->>B: Cache proxy commands by UUID
-    B->>C: PlayerCommandSendEvent → local + proxy commands
+    C->>P: Гравець заходить на сервер
+    P->>B: TabSync (дозволені проксі-команди)
+    B->>B: Кешує проксі-команди за UUID
+    B->>C: Локальні команди + проксі-команди в tab
 ```
 
-## Setup
+## Налаштування
 
-### 1. Proxy config (`velocity-config.yml` or `bungee-config.yml`)
+### 1. Конфіг проксі (`config.yml` на Velocity)
 
 ```yaml
 is_network: true
@@ -38,7 +52,7 @@ tab:
       - "/skin"
 ```
 
-### 2. Backend config (`config.yml`)
+### 2. Конфіг бекенда (`config.yml` на Spigot)
 
 ```yaml
 is_network: true
@@ -46,32 +60,35 @@ is_network: true
 tab:
   default:
     priority: 0
-    commands: []   # proxy commands are added automatically via TabSync
+    commands: []   # проксі-команди додаються автоматично через TabSync
 ```
 
 :::info
-Each layer manages its own commands independently:
-- **Proxy** manages proxy plugin commands (`/hub`, `/server`, `/skin`...)
-- **Backend** manages backend plugin commands (`/home`, `/spawn`...)
-- TabSync adds proxy commands on top of backend commands in the client's tab list
+Кожен рівень керує своїми командами незалежно. Локальні tab-групи бекенда й далі
+діють для його власних команд — TabSync лише робить проксі-команди видимими в
+автодоповненні на бекенді.
 :::
 
-## Updating After Config Change
+## Оновлення після зміни конфігу
 
-After editing the proxy config:
+Після редагування конфігу проксі:
+
 ```
 /cgv reload
 ```
-This reloads the config **and** pushes TabSync to all online players immediately — no relog needed.
 
-After editing the backend config:
+Ця команда перечитує конфіг **і** одразу надсилає TabSync усім онлайн-гравцям —
+перезаходити не потрібно.
+
+Після редагування конфігу бекенда:
+
 ```
 /cg reload
 ```
 
-## Force-Update a Single Player
+## Примусове оновлення одного гравця
 
 ```
-/cgv updategroup <player>
-/cg updategroup <player>
+/cgv updategroup <гравець>
+/cg updategroup <гравець>
 ```

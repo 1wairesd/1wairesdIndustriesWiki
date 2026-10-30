@@ -1,0 +1,23 @@
+{
+  "home.description": {
+    "message": "Документация проектов 1wairesd Industries."
+  },
+  "home.badge": {
+    "message": "Документация"
+  },
+  "home.tagline": {
+    "message": "Официальная документация проектов 1wairesd Industries. Выберите проект ниже, чтобы начать."
+  },
+  "home.getStarted": {
+    "message": "Начать"
+  },
+  "home.projects": {
+    "message": "Проекты"
+  },
+  "home.card.openDocs": {
+    "message": "Открыть документацию"
+  },
+  "home.card.commandguard": {
+    "message": "Блокировка команд и управление tab-complete для Spigot и Velocity. Игроки видят только разрешённые команды."
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "home.description": {
+    "message": "Документація проєктів 1wairesd Industries."
+  },
+  "home.badge": {
+    "message": "Документація"
+  },
+  "home.tagline": {
+    "message": "Офіційна документація проєктів 1wairesd Industries. Оберіть проєкт нижче, щоб почати."
+  },
+  "home.getStarted": {
+    "message": "Почати роботу"
+  },
+  "home.projects": {
+    "message": "Проєкти"
+  },
+  "home.card.openDocs": {
+    "message": "Відкрити документацію"
+  },
+  "home.card.commandguard": {
+    "message": "Блокування команд і керування tab-complete для Spigot та Velocity. Гравці бачать лише дозволені команди."
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "Ця сторінка зазнала збоїв.",
+    "description": "Заголовок сторінки на випадок збою"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Прокрутити наверх",
+    "description": "ARIA мітка для кнопки прокручування наверх"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "Переглянути всі теги",
+    "description": "Мітка посилання на сторінку списку тегів"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Перемикати між темною та світлою темою (зараз {mode})",
+    "description": "ARIA мітка для перемикача кольорових режимів на панелі навігації"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "темна тема",
+    "description": "Назва темної кольорової теми"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "світла тема",
+    "description": "Назва світлої кольорової теми"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Хлібні крихти",
+    "description": "ARIA мітка для хлібних крихт"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 елемент|{count} елементи",
+    "description": "Опис за замовчуванням для картки категорії у згенерованому індексі"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Сторінки документації",
+    "description": "ARIA мітка для пагінації документації"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Попередній",
+    "description": "Мітка для переходу до попереднього документа"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Наступний",
+    "description": "Мітка для переходу до наступного документа"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "Один документ позначений|{count} документи позначені",
+    "description": "Множинна форма"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} з тегом \"{tagName}\"",
+    "description": "Заголовок сторінки для тегу документації"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Версія: {versionLabel}"
+  },
+  "theme.common.editThisPage": {
+    "message": "Редагувати цю сторінку",
+    "description": "Мітка посилання для редагування поточної сторінки"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Пряме посилання на {heading}",
+    "description": "Назва для посилання на заголовок"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " {date}",
+    "description": "Текст, що вказує на дату останнього оновлення сторінки"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " від {user}",
+    "description": "Текст, що вказує, хто останнім оновив сторінку"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Останнє оновлення{atDate}{byUser}",
+    "description": "Фраза, що показує, коли та ким було оновлено сторінку"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Мови",
+    "description": "Мітка для мобільного перемикача мов"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Назад до головного меню",
+    "description": "Мітка кнопки повернення до головного меню"
+  },
+  "theme.NotFound.title": {
+    "message": "Сторінку не знайдено",
+    "description": "Заголовок сторінки 404"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "На цій сторінці",
+    "description": "Мітка кнопки згортання TOC"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Теги:",
+    "description": "Мітка поруч зі списком тегів"
+  },
+  "theme.admonition.caution": {
+    "message": "увага",
+    "description": "Мітка для :::caution"
+  },
+  "theme.admonition.danger": {
+    "message": "небезпека",
+    "description": "Мітка для :::danger"
+  },
+  "theme.admonition.info": {
+    "message": "інформація",
+    "description": "Мітка для :::info"
+  },
+  "theme.admonition.note": {
+    "message": "зауваження",
+    "description": "Мітка для :::note"
+  },
+  "theme.admonition.tip": {
+    "message": "порада",
+    "description": "Мітка для :::tip"
+  },
+  "theme.admonition.warning": {
+    "message": "попередження",
+    "description": "Мітка для :::warning"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Закрити",
+    "description": "ARIA мітка для кнопки закриття анонсної панелі"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Скопійовано",
+    "description": "Мітка кнопки копіювання коду"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Копіювати",
+    "description": "Мітка кнопки копіювання коду"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Перенесення рядків",
+    "description": "Мітка перемикача перенесення рядків у блоці коду"
+  }
+}

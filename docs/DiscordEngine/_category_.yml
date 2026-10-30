@@ -1,8 +1,0 @@
-label: "DiscordEngine"
-collapsible: true
-collapsed: true
-link:
-  type: doc
-  id: "discordengine-main"
-customProps:
-  icon: "FaGift"

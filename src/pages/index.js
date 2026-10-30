@@ -1,34 +1,11 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
+import Translate, { translate } from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
-const projects = [
-  {
-    name: 'CommandGuard',
-    description: 'Cross-platform command blocker and tab-complete manager for Spigot, Velocity and Waterfall.',
-    href: '/docs/CommandGuard/commandguard-intro',
-    badge: 'Minecraft Plugin',
-    color: '#5b6af0',
-  },
-  {
-    name: 'DiscordEngine',
-    description: 'Powerful toolkit for building Discord bots and integrations with a clean developer API.',
-    href: '/docs/DiscordEngine/discordengine-main',
-    badge: 'Discord',
-    color: '#5865f2',
-  },
-  {
-    name: 'ResdAI',
-    description: 'AI-powered tools and utilities built for the 1wairesd Industries ecosystem.',
-    href: '/docs/ResdAI/resdai-main',
-    badge: 'AI',
-    color: '#10b981',
-  },
-];
-
-function ProjectCard({ name, description, href, badge, color }) {
+function ProjectCard({ name, description, href, badge, color, cta }) {
   return (
     <Link to={href} className={styles.card}>
       <div className={styles.cardBadge} style={{ background: color + '18', color }}>
@@ -36,7 +13,7 @@ function ProjectCard({ name, description, href, badge, color }) {
       </div>
       <h3 className={styles.cardTitle}>{name}</h3>
       <p className={styles.cardDesc}>{description}</p>
-      <span className={styles.cardArrow}>Read docs →</span>
+      <span className={styles.cardArrow}>{cta} →</span>
     </Link>
   );
 }
@@ -44,18 +21,35 @@ function ProjectCard({ name, description, href, badge, color }) {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
 
+  const openDocs = translate({
+    id: 'home.card.openDocs',
+    message: 'Відкрити документацію',
+  });
+
   return (
-    <Layout title={siteConfig.title} description="Official documentation for 1wairesd Industries projects.">
+    <Layout
+      title={siteConfig.title}
+      description={translate({
+        id: 'home.description',
+        message: 'Документація проєктів 1wairesd Industries.',
+      })}
+    >
       <main className={styles.main}>
 
         {/* Hero */}
         <section className={styles.hero}>
-          <div className={styles.heroBadge}>Documentation</div>
+          <div className={styles.heroBadge}>
+            <Translate id="home.badge">Документація</Translate>
+          </div>
           <h1 className={styles.title}>{siteConfig.title}</h1>
-          <p className={styles.tagline}>{siteConfig.tagline}</p>
+          <p className={styles.tagline}>
+            <Translate id="home.tagline">
+              Офіційна документація проєктів 1wairesd Industries. Оберіть проєкт нижче, щоб почати.
+            </Translate>
+          </p>
           <div className={styles.buttons}>
-            <Link className={styles.primaryBtn} to="/docs/main">
-              Get Started
+            <Link className={styles.primaryBtn} to="/docs/CommandGuard/commandguard-intro">
+              <Translate id="home.getStarted">Почати роботу</Translate>
             </Link>
             <Link className={styles.secondaryBtn} to="https://github.com/1wairesd">
               GitHub
@@ -65,9 +59,22 @@ export default function Home() {
 
         {/* Projects */}
         <section className={styles.projects}>
-          <h2 className={styles.sectionTitle}>Projects</h2>
+          <h2 className={styles.sectionTitle}>
+            <Translate id="home.projects">Проєкти</Translate>
+          </h2>
           <div className={styles.grid}>
-            {projects.map(p => <ProjectCard key={p.name} {...p} />)}
+            <ProjectCard
+              name="CommandGuard"
+              badge="Minecraft Plugin"
+              color="#5b6af0"
+              href="/docs/CommandGuard/commandguard-intro"
+              cta={openDocs}
+              description={
+                <Translate id="home.card.commandguard">
+                  Блокування команд і керування tab-complete для Spigot та Velocity. Гравці бачать лише дозволені команди.
+                </Translate>
+              }
+            />
           </div>
         </section>
 

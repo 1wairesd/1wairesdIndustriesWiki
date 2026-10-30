@@ -1,20 +1,23 @@
 ---
 id: commandguard-groups
-title: Permission Groups
+title: Групи прав
 sidebar_position: 4
 ---
 
-# Permission Groups
+# Групи прав
 
-Groups let you show different commands to different players in tab-complete.
+Групи визначають, які команди гравець бачить в автодоповненні. Гравець потрапляє
+до групи через право `commandguard.tab.<назваГрупи>`. Група `default` діє на всіх
+без винятку.
 
-## How It Works
+## Як це працює
 
-1. Define groups in `config.yml` under `tab:`
-2. Assign the permission `commandguard.tab.<group>` to players via LuckPerms
-3. The plugin picks the group with the **highest priority** the player has
+1. Групи описуються в `config.yml` у секції `tab:`.
+2. Гравцю видається право `commandguard.tab.<група>` (наприклад, через LuckPerms
+   чи будь-який плагін прав).
+3. Плагін обирає групу з **найвищим пріоритетом** серед тих, що є у гравця.
 
-## Example
+## Базовий приклад
 
 ```yaml
 tab:
@@ -23,14 +26,12 @@ tab:
     commands:
       - "/spawn"
       - "/help"
-
   vip:
     priority: 1
-    extends: default      # inherits /spawn and /help
+    extends: default      # успадковує /spawn і /help
     commands:
       - "/home"
       - "/tpa"
-
   admin:
     priority: 2
     extends: vip
@@ -39,20 +40,43 @@ tab:
       - "/tp"
 ```
 
-Give a player the `vip` group:
+Видати гравцю групу `vip` (приклад із LuckPerms):
+
 ```
-/lp user <player> permission set commandguard.tab.vip true
+/lp user <гравець> permission set commandguard.tab.vip true
 ```
 
-## Priority & Merging
+:::note
+`commandguard.tab.<група>` — це звичайне право Bukkit. LuckPerms тут лише приклад;
+підійде будь-яка система прав.
+:::
 
-- If a player has **one** group → that group is used
-- If a player has **multiple** groups → the one with the **highest priority** wins
-- If two groups have the **same priority** → their command lists are **merged**
+## Пріоритет і злиття
 
-## Per-Server Groups (Proxy only)
+- Якщо у гравця **одна** група — використовується вона.
+- Якщо груп **кілька** — виграє та, що має **найвищий пріоритет**.
+- Якщо дві групи мають **однаковий** пріоритет — їхні списки команд
+  **об'єднуються**.
 
-Restrict a group to specific backend servers:
+## Наслідування (`extends`)
+
+`extends` додає команди іншої групи до поточної, без повторення:
+
+```yaml
+tab:
+  moderator:
+    priority: 3
+    extends: vip        # отримує всі команди vip
+    commands:
+      - "/ban"
+      - "/mute"
+```
+
+Наслідування рекурсивне: `moderator` → `vip` → `default`.
+
+## Групи для окремих серверів (`servers`) — тільки проксі
+
+На проксі групу можна обмежити конкретними бекенд-серверами через `servers`:
 
 ```yaml
 tab:
@@ -65,20 +89,25 @@ tab:
       - "/gamemode"
 ```
 
-This group only applies when the player is on `survival` or `survival2`.
+Така група діє лише коли гравець на сервері `survival` або `survival2`. Якщо
+`servers` не вказано — група діє на всіх серверах.
 
-## Group Inheritance
+## Режим білого списку
 
-Use `extends` to inherit commands from another group without repeating them:
+За замовчуванням `commands` у `config.yml` — це чорний список (заблоковані).
+Якщо увімкнути whitelist, усе навпаки: дозволені лише перелічені команди.
 
 ```yaml
-tab:
-  moderator:
-    priority: 3
-    extends: vip        # gets all vip commands
-    commands:
-      - "/ban"
-      - "/mute"
+use_commands_as_whitelist: true
+commands:
+  - "/spawn"
+  - "/msg"
 ```
 
-Inheritance is recursive — `moderator` → `vip` → `default`.
+Тепер працюють лише `/spawn` і `/msg`, решта блокується.
+
+## Захист від spy-клієнтів
+
+CommandGuard фільтрує сирі пакети `TAB_COMPLETE`, тож чит-клієнти не можуть
+«витягнути» приховані команди повз звичайне автодоповнення. Приховані команди
+залишаються прихованими навіть для модифікованих клієнтів.

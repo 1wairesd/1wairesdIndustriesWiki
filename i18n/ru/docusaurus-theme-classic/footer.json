@@ -1,0 +1,20 @@
+{
+  "link.title.Проєкти": {
+    "message": "Проекты"
+  },
+  "link.title.Спільнота": {
+    "message": "Сообщество"
+  },
+  "link.item.label.CommandGuard": {
+    "message": "CommandGuard"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub"
+  },
+  "link.item.label.Modrinth": {
+    "message": "Modrinth"
+  },
+  "copyright": {
+    "message": "Copyright © 2026 1wairesd Industries"
+  }
+}

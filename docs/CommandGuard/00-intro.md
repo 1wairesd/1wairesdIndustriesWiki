@@ -1,45 +1,70 @@
 ---
 id: commandguard-intro
-title: Introduction
+title: Огляд
 sidebar_position: 1
+sidebar_custom_props:
+  icon: FaHome
 ---
 
 # CommandGuard
 
-**CommandGuard** is a cross-platform Minecraft plugin that lets you control which commands players can execute and see in tab-complete — on Spigot/Paper, Velocity, and Waterfall.
+**CommandGuard** керує тим, які команди гравці бачать і можуть виконувати на
+вашому сервері. Він працює на двох рівнях одразу:
 
-## Platforms
+- **Блокує команди** — заборонена команда не виконується, а замість неї спрацьовує
+  налаштована дія (повідомлення, звук, title, команда консолі, ефект зілля).
+- **Фільтрує tab-complete** — у списку автодоповнення гравець бачить лише ті
+  команди, які йому дозволені. Прихованих команд немає навіть у підказках.
 
-| Platform | Versions | Support |
-|----------|----------|---------|
-| Paper / Spigot | 1.13+ | ✅ |
-| Velocity | 3.1+ | ✅ |
-| Waterfall | 1.18+ | ✅ |
+Працює на окремому сервері Spigot/Paper і на проксі Velocity.
 
-**Java:** 17+
+## Платформи
 
-## Key Features
+| Платформа       | Версії  |
+|-----------------|---------|
+| Paper / Spigot  | 1.16.5+ |
+| Velocity        | 3.x     |
 
-- **Tab-complete filtering** — players only see commands they're allowed to use
-- **Command blocking** — block commands with custom actions (message, title, sound, kick, potion effect...)
-- **Whitelist mode** — flip the list to allow only specific commands, block everything else
-- **Permission groups** — create groups with different command lists, assign via LuckPerms
-- **Group inheritance** — groups can extend other groups recursively
-- **Group merging** — groups with equal priority are merged together
-- **Per-server groups** — restrict a group to specific backend servers (proxy only)
-- **Cross-server sync (TabSync)** — proxy pushes its allowed commands to backend via plugin messaging
-- **Spy-client protection** — blocks tab-complete packet responses for hidden commands
-- **Multi-language** — `en_EN`, `ru_RU` bundled, add your own
-- **Configurable prefix** — change the plugin prefix in the lang file, no restart needed
-- **`/cg check <player>`** — inspect which group and commands a player has
-- **`/cg updategroup <player>`** — push updated tab list to a player instantly
+Мінімальна версія Java залежить від платформи: Spigot — Java 17, Velocity — Java 21.
 
-## Quick Navigation
+## Spigot чи Velocity — хто за що відповідає
 
-- [Installation](./01-installation.md)
-- [Configuration](./02-configuration.md)
-- [Permission Groups](./03-groups.md)
-- [Cross-Server Setup](./04-network.md)
-- [Commands](./05-commands.md)
-- [Permissions](./06-permissions.md)
-- [Localization](./07-localization.md)
+Кожна версія працює зі своїм набором команд:
+
+- **Spigot (бекенд)** відповідає за команди бекенд-сервера. Блокує будь-який ввід
+  гравця за списком із `config.yml` і фільтрує tab-complete для команд,
+  зареєстрованих на цьому сервері.
+- **Velocity (проксі)** відповідає **лише за команди проксі** (ті, що зареєстровані
+  на самому Velocity). Команди бекенда проксі не чіпає — ними займається Spigot.
+
+Якщо плагін стоїть і там, і там, вони не дублюють роботу, а доповнюють одна одну.
+Докладніше про сумісну роботу — у розділі [Робота в мережі](./04-network.md).
+
+## Основні можливості
+
+- **Фільтрація tab-complete** — гравець бачить лише дозволені йому команди.
+- **Блокування команд** із діями: `message`, `title`, `sound`, `console_command`,
+  `give_potion_effect`.
+- **Режим білого списку** — дозволити лише певні команди, решту заблокувати.
+- **Групи прав** із пріоритетом, наслідуванням (`extends`) і злиттям груп
+  однакового пріоритету.
+- **Групи для окремих серверів** (`servers`) — різні списки tab на різних
+  бекендах (тільки проксі).
+- **TabSync між серверами** — проксі надсилає дозволений список проксі-команд на
+  бекенд через plugin messaging.
+- **Захист від spy-клієнтів** — фільтрує сирі пакети TAB_COMPLETE, щоб чит-клієнти
+  не могли дізнатися приховані команди.
+- **Багатомовність** — у комплекті `en_EN` і `ru_RU`, свої мови додаються в
+  `plugins/CommandGuard/lang/`.
+- **Блокування команд із двокрапкою** — за бажанням блокує всі обходи виду
+  `namespace:command`.
+
+## Швидка навігація
+
+- [Встановлення](./01-installation.md) — як поставити і запустити плагін.
+- [Конфігурація](./02-configuration.md) — розбір `config.yml`.
+- [Групи прав](./03-groups.md) — пріоритети, наслідування, per-server.
+- [Робота в мережі](./04-network.md) — TabSync між проксі та бекендом.
+- [Команди](./05-commands.md) — список команд.
+- [Права](./06-permissions.md) — список дозволів.
+- [Локалізація](./07-localization.md) — мовні файли та префікс.

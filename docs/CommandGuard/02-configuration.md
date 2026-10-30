@@ -1,84 +1,138 @@
 ---
 id: commandguard-configuration
-title: Configuration
+title: Конфігурація
 sidebar_position: 3
 ---
 
-# Configuration
+# Конфігурація
 
-## config.yml (Backend — Paper/Spigot)
+Нижче розібрано `config.yml`. Частина ключів спільна для Spigot і Velocity,
+частина — лише для однієї платформи. Це позначено окремо.
+
+## Загальні ключі
+
+### `lang`
+
+Мовний файл із теки `lang/`. У комплекті `en_EN` і `ru_RU`. Щоб додати свою мову,
+скопіюйте один із файлів, перекладіть і вкажіть його ім'я тут.
 
 ```yaml
-# Language: en_EN or ru_RU (files in plugins/CommandGuard/lang/)
 lang: en_EN
+```
 
-# Tab-complete groups
+### `tab`
+
+Групи tab-complete. Гравець отримує групу через право
+`commandguard.tab.<назваГрупи>`. Група `default` діє на всіх.
+
+```yaml
 tab:
   default:
     priority: 0
     commands: []
   vip:
     priority: 1
-    extends: default   # inherits commands from 'default'
+    extends: default
     commands:
       - "/home"
+```
 
-# Actions when a blocked command is used
+Детально про пріоритети та наслідування — у розділі
+[Групи прав](./03-groups.md).
+
+### `blocked_command_default_actions`
+
+Дії, що виконуються, коли гравець викликає заблоковану команду і для неї немає
+окремого правила.
+
+```yaml
 blocked_command_default_actions:
-  - "message: &cYou can't use that command."
+  - "message: &8[&b&lCG&8] &cУ вас немає прав на цю команду."
   - "playsound: BLOCK_NOTE_BLOCK_PLING;10;0.1"
+  - "title: 20;40;20;&cЩо ви робите?;&7Не використовуйте цю команду!"
+```
 
-# true = commands list is a whitelist (only listed commands are allowed)
-use_commands_as_whitelist: false
+Доступні типи дій: `message`, `title`, `playsound`, `console_command`,
+`give_potion_effect`.
 
-# Set true if ECB is also on the proxy — enables TabSync
-is_network: false
+### `update_notify`
 
-# Enable update notifications for OP players on join
+Показувати сповіщення про оновлення. На Spigot — OP-гравцям при вході, на
+Velocity — у консолі.
+
+```yaml
 update_notify: true
+```
 
-# Enable legacy 1.12- support (requires ProtocolLib)
-legacy_support: false
+### `use_commands_as_whitelist`
 
-# Block all commands containing ":"
-block_colon_commands: false
+Якщо `true`, список `commands` стає **білим списком** (дозволені), а не чорним
+(заблоковані).
 
-# Commands to block (or allow, if use_commands_as_whitelist: true)
+```yaml
+use_commands_as_whitelist: false
+```
+
+### `commands`
+
+Список команд для блокування (або дозволу, якщо увімкнено whitelist).
+
+```yaml
 commands:
+  - "/ver"
+  - "/version"
   - "/plugins"
   - "/pl"
-  - "/version"
-  - "/ver"
+```
 
-# Custom actions per command group
+### `block_colon_commands`
+
+Блокувати будь-яку команду, що містить `:` (запобігання обходу через
+`namespace:command`).
+
+```yaml
+block_colon_commands: false
+```
+
+### `custom_commands_actions`
+
+Окремі дії для конкретних команд. На Spigot команди звідси мають також бути
+присутні в списку `commands`.
+
+```yaml
 custom_commands_actions:
   example1:
     commands:
+      - "/ver"
       - "/version"
     actions:
-      - "console_command: kick %player% No peeking!"
+      - "console_command: kick %player% Вам не можна бачити версію сервера!"
 ```
 
-## velocity-config.yml / bungee-config.yml (Proxy)
+## TabSync (мережа)
 
-Same structure as backend config, with two extra options:
+Ці ключі є в обох конфігах, але поводяться по-різному залежно від платформи.
+
+### `is_network`
+
+- **Velocity:** `true` — проксі надсилає дозволений список проксі-команд на
+  бекенд-сервери (TabSync) при вході гравця.
+- **Spigot:** `true` — сервер приймає цей список від проксі й **об'єднує** його зі
+  своїм локальним tab-списком, щоб проксі-команди було видно в автодоповненні.
 
 ```yaml
-lang: en_EN
-
-# true = push allowed proxy commands to backend via plugin messaging
 is_network: false
+```
 
-# Delay (ms) before sending TabSync after player connects (default 500, usually fine)
+### `tab_sync_delay`
+
+Зарезервований ключ (значення в мілісекундах). Присутній у конфізі, але наразі
+не впливає на роботу: TabSync надсилається й застосовується без цієї затримки.
+Залишений для сумісності конфігів.
+
+```yaml
 tab_sync_delay: 500
 ```
 
-## Available Actions
-
-| Action | Format | Example |
-|--------|--------|---------|
-| `message` | `message: <text>` | `message: &cNo permission!` |
-| `title` | `title: fadeIn;stay;fadeOut;title;subtitle` | `title: 20;40;20;&cBlocked;&7Don't do that` |
-| `playsound` | `playsound: SOUND;volume;pitch` | `playsound: BLOCK_NOTE_BLOCK_PLING;10;0.1` |
-| `console_command` | `console_command: <cmd>` | `console_command: kick %player% Bye` |
-| `give_potion_effect` | `give_potion_effect: TYPE;duration;level` | `give_potion_effect: BLINDNESS;100;1` |
+Докладніше про сумісну роботу проксі та бекенда — у розділі
+[Робота в мережі](./04-network.md).

@@ -1,81 +1,79 @@
 ---
 id: commandguard-localization
-title: Localization
+title: Локалізація
 sidebar_position: 8
 ---
 
-# Localization
+# Локалізація
 
-CommandGuard supports multiple languages. All messages, including the plugin prefix, are defined in lang files.
+CommandGuard підтримує кілька мов. Усі повідомлення, зокрема префікс плагіна,
+задаються в мовних файлах.
 
-## Selecting a Language
+## Вибір мови
 
-In `config.yml` (backend) or `velocity-config.yml` / `bungee-config.yml` (proxy):
+У `config.yml` вкажіть ім'я мовного файлу без розширення:
 
 ```yaml
 lang: en_EN
 ```
 
-Bundled languages: `en_EN`, `ru_RU`.
+У комплекті: `en_EN` (англійська) і `ru_RU` (російська).
 
-## Lang File Location
+## Розташування мовних файлів
 
-On first start the plugin extracts the bundled lang files to:
+При першому запуску плагін розпаковує мовні файли на диск:
 
 ```
 plugins/CommandGuard/lang/en_EN.yml
 plugins/CommandGuard/lang/ru_RU.yml
 ```
 
-You can edit them freely — they won't be overwritten on restart.
+Їх можна вільно редагувати — при перезапуску вони не перезаписуються.
 
-## Adding a Custom Language
+## Додавання своєї мови
 
-1. Create `plugins/CommandGuard/lang/uk_UA.yml` (or any code you want)
-2. Copy the contents of `en_EN.yml` as a base
-3. Translate all values
-4. Set `lang: uk_UA` in config
-5. Run `/cg reload` or `/cgv reload`
+1. Створіть `plugins/CommandGuard/lang/uk_UA.yml` (або будь-який код мови).
+2. Скопіюйте вміст `en_EN.yml` як основу.
+3. Перекладіть усі значення.
+4. Вкажіть `lang: uk_UA` у `config.yml`.
+5. Виконайте `/cg reload` або `/cgv reload`.
 
-## Changing the Prefix
+## Зміна префікса
 
-The prefix is defined inside the lang file, not in `config.yml`:
+Префікс задається в мовному файлі, а не в `config.yml`:
 
 ```yaml
-# en_EN.yml
 prefix: "&8[&cCommand&fGuard&8]"
 ```
 
-Change it to anything you like — color codes (`&a`, `&c`...) and hex colors (`#ff5555`) are supported:
+Підтримуються кольорові коди (`&a`, `&c`...) та hex-кольори (`#ff5555`):
 
 ```yaml
 prefix: "&8[&6CG&8]"
-prefix: "#ff5555[CommandGuard]"
 prefix: "&5&lCommandGuard &8»"
 ```
 
-After editing run `/cg reload` — the new prefix takes effect immediately for all messages.
+Після зміни виконайте `/cg reload` — новий префікс одразу застосується до всіх
+повідомлень.
 
-## Available Placeholders
+## Плейсхолдери
 
-| Placeholder | Description |
-|-------------|-------------|
-| `%prefix%` | Plugin prefix (auto-available in all messages) |
-| `%player%` | Player name |
-| `%version%` | Plugin version |
-| `%count%` | Number (used in tabsync sent, command count) |
-| `%groups%` | Active group name(s) |
-| `%commands%` | List of allowed commands |
-| `%server%` | Server name |
-| `%sound%` | Sound name (error message) |
+| Плейсхолдер | Опис |
+|-------------|------|
+| `%player%` | Ім'я гравця |
+| `%count%` | Число (кількість команд / гравців у TabSync) |
+| `%groups%` | Активна група (групи) |
+| `%commands%` | Список дозволених команд |
+| `%server%` | Назва сервера |
+| `%sound%` | Назва звуку (у повідомленні про помилку) |
 
-## Full File Reference
+## Приклад мовного файлу
 
 ```yaml
-# Plugin prefix
+# Префікс плагіна (у всіх повідомленнях)
 prefix: "&8[&cCommand&fGuard&8]"
 
-# Commands
+# Повідомлення команд
 cmd.no_permission: "&cYou don't have permission to use this command."
 cmd.help.header: "&fCommands:"
 cmd.help.reload: " &c/cg reload &7— &freload config and refresh tab for all players"
@@ -93,17 +91,6 @@ cmd.updategroup.success: "&fTab list updated for &c%player%."
 cmd.usage.check: "&fUsage: &c/cg check <player>"
 cmd.usage.updategroup: "&fUsage: &c/cg updategroup <player>"
 
-# Update notifications
-update.available: "&fNew version available. &8(&c%version%&8)"
-update.download: "&fDownload: &chttps://modrinth.com/plugin/commandguard"
-
-# Console
-console.enabled: "&eEnabled! &fVersion: &c%version%"
-console.disabled: "&eDisabled! &fVersion: &c%version%"
-console.update_available: "&fNew version: &c%version%"
-console.update_download: "&fDownload: &chttps://modrinth.com/plugin/commandguard"
-console.update_error: "&cError while checking for updates."
-
-# Misc
+# Інше
 misc.invalid_sound: "&fSound &c%sound% &fis not valid. Change it in the config!"
 ```

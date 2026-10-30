@@ -1,152 +1,121 @@
-// @ts-check
-import { themes as prismThemes } from 'prism-react-renderer';
+import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '1wairesdIndustries',
-  tagline: 'Ukrainian development studio for Minecraft',
-  favicon: 'img/1wairesdindustries.ico',
+  title: "1wairesd Industries",
+  tagline: "Документація плагінів та інструментів для Minecraft",
+  favicon: "img/favicon.ico",
 
-  url: 'https://1wairesd.github.io',
-  baseUrl: '/1wairesdIndustriesWiki/',
-  organizationName: '1wairesd',
-  projectName: '1wairesdIndustriesWiki',
+  // Production URL (GitHub Pages).
+  url: "https://1wairesd.github.io",
+  baseUrl: "/1wairesdIndustriesWiki/",
+
+  // GitHub Pages deployment config.
+  organizationName: "1wairesd",
+  projectName: "1wairesdIndustriesWiki",
   trailingSlash: false,
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: "warn",
 
+  // Українська — основна мова. Переклади лежать у i18n/<locale>/.
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ua', 'ru'],
+    defaultLocale: "ua",
+    locales: ["ua", "en", "ru"],
     localeConfigs: {
-      en:  { htmlLang: 'en-US', label: 'English' },
-      ua:  { htmlLang: 'uk-UA', label: 'Українська' },
-      ru:  { htmlLang: 'ru-RU', label: 'Русский' },
+      ua: { label: "Українська", htmlLang: "uk-UA" },
+      en: { label: "English", htmlLang: "en-US" },
+      ru: { label: "Русский", htmlLang: "ru-RU" },
     },
   },
 
   markdown: {
     mermaid: true,
     hooks: {
-      onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownLinks: "warn",
     },
   },
-
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ["@docusaurus/theme-mermaid"],
 
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          routeBasePath: '/docs',
-          sidebarPath: './sidebars.js',
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
+          sidebarPath: require.resolve("./sidebars.js"),
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],
   ],
 
   themeConfig: {
-    image: 'img/1wairesdindustries.png',
-
-    // announcementBar: {
-    //   id: 'new_release',
-    //   content: '🎉 CommandGuard 2025.04.1 is out! <a href="/docs/CommandGuard/commandguard-intro">Read the docs →</a>',
-    //   backgroundColor: '#5b6af0',
-    //   textColor: '#ffffff',
-    //   isCloseable: true,
-    // },
-
+    image: "img/1wairesdindustries.png",
     navbar: {
-      title: '1wairesdIndustries',
+      title: "1wairesd Industries",
       logo: {
-        alt: '1wairesdIndustries Logo',
-        src: 'img/1wairesdindustries.png',
+        alt: "1wairesd Industries",
+        src: "img/1wairesdindustries.png",
       },
-      hideOnScroll: false,
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Docs',
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          position: "left",
+          label: "Документація",
         },
         {
-          href: 'https://github.com/1wairesd',
-          position: 'right',
-          label: 'GitHub',
+          href: "https://github.com/1wairesd",
+          label: "GitHub",
+          position: "right",
         },
-        { type: 'localeDropdown', position: 'right' },
+        { type: "localeDropdown", position: "right" },
       ],
     },
-
     docs: {
       sidebar: {
         hideable: true,
         autoCollapseCategories: true,
       },
     },
-
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Проєкти",
           items: [
-            { label: 'CommandGuard', to: '/docs/CommandGuard/commandguard-intro' },
-            { label: 'DiscordEngine', to: '/docs/DiscordEngine/discordengine-main' },
+            {
+              label: "CommandGuard",
+              to: "/docs/CommandGuard/commandguard-intro",
+            },
           ],
         },
         {
-          title: 'Community',
+          title: "Спільнота",
           items: [
-            { label: 'Website', href: 'https://1wairesd.xyz' },
-            { label: 'Discord', href: 'https://discord.gg/example' },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            { label: 'GitHub', href: 'https://github.com/1wairesd' },
-            { label: 'Wiki Source', href: 'https://github.com/1wairesd/1wairesdIndustriesWiki' },
+            {
+              label: "GitHub",
+              href: "https://github.com/1wairesd",
+            },
+            {
+              label: "Modrinth",
+              href: "https://modrinth.com/plugin/commandguard",
+            },
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} 1wairesdIndustries`,
+      copyright: `Copyright © ${new Date().getFullYear()} 1wairesd Industries`,
     },
-
     colorMode: {
-      defaultMode: 'dark',
-      disableSwitch: false,
+      defaultMode: "dark",
       respectPrefersColorScheme: true,
     },
-
     prism: {
-      theme: prismThemes.oneLight,
-      darkTheme: prismThemes.oneDark,
-      additionalLanguages: ['java', 'yaml'],
-      magicComments: [
-        {
-          className: 'theme-code-block-highlighted-line',
-          line: 'highlight-next-line',
-          block: { start: 'highlight-start', end: 'highlight-end' },
-        },
-        {
-          className: 'code-block-error-line',
-          line: 'error-next-line',
-        },
-      ],
-    },
-
-    mermaid: {
-      theme: { light: 'neutral', dark: 'dark' },
-      options: { fontSize: 16 },
+      theme: prismThemes.vsLight,
+      darkTheme: prismThemes.vsDark,
+      additionalLanguages: ["java", "groovy", "yaml"],
     },
   },
 };

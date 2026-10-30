@@ -1,38 +1,24 @@
 ---
 id: commandguard-permissions
-title: Permissions
+title: Права
 sidebar_position: 7
 ---
 
-# Permissions
+# Права
 
-## Admin
-
-| Permission | Description |
-|------------|-------------|
-| `commandguard.admin` | Access to all `/cg` and `/cgv` commands |
-
-## Bypass
-
-| Permission | Description |
-|------------|-------------|
-| `commandguard.bypass.commands` | Skip command blocking entirely |
-| `commandguard.bypass.tab` | Skip tab-complete filtering entirely |
-
-## Tab Groups
-
-| Permission | Description |
-|------------|-------------|
-| `commandguard.tab.default` | Applied to all players automatically (no need to assign) |
-| `commandguard.tab.<group>` | Assign a custom tab group to a player |
-
-### Assigning a Group via LuckPerms
-
-```bash
-/lp user <player> permission set commandguard.tab.vip true
-/lp group vip permission set commandguard.tab.vip true
-```
+| Право | Опис |
+|-------|------|
+| `commandguard.admin` | Доступ до всіх команд `/cg` та `/cgv` |
+| `commandguard.bypass.commands` | Обхід блокування команд |
+| `commandguard.bypass.tab` | Обхід фільтрації tab-complete |
+| `commandguard.tab.<група>` | Призначити гравцю tab-групу |
 
 :::tip
-The `default` group applies to everyone who doesn't have any other group permission. You don't need to assign it manually.
+Щоб видати гравцю групу `vip` з конфігу, дайте йому право
+`commandguard.tab.vip`. Група `default` діє на всіх автоматично й не потребує права.
+:::
+
+:::note
+На Spigot гравці з правами OP обходять блокування команд за замовчуванням.
+Для них проксі-команди в мережевому режимі все одно показуються в автодоповненні.
 :::

@@ -1,5 +1,8 @@
 label: "CommandGuard"
 collapsible: true
 collapsed: false
+link:
+  type: doc
+  id: commandguard-intro
 customProps:
-  icon: "FaShield"
+  icon: FaCogs

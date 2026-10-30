@@ -1,0 +1,23 @@
+{
+  "home.description": {
+    "message": "Documentation for 1wairesd Industries projects."
+  },
+  "home.badge": {
+    "message": "Documentation"
+  },
+  "home.tagline": {
+    "message": "Official documentation for 1wairesd Industries projects. Pick a project below to get started."
+  },
+  "home.getStarted": {
+    "message": "Get started"
+  },
+  "home.projects": {
+    "message": "Projects"
+  },
+  "home.card.openDocs": {
+    "message": "Open the docs"
+  },
+  "home.card.commandguard": {
+    "message": "Command blocking and tab-complete management for Spigot and Velocity. Players only see the commands they're allowed to use."
+  }
+}
